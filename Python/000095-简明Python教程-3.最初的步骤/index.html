@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-3.最初的步骤 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-1-简介"><span class="toc-text">3.1 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-2-使用带提示符的解释器"><span class="toc-text">3.2 使用带提示符的解释器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-3-挑选一个编辑器"><span class="toc-text">3.3 挑选一个编辑器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-4-使用源文件"><span class="toc-text">3.4 使用源文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-5-可执行的Python程序"><span class="toc-text">3.5 可执行的Python程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-6-获取帮助"><span class="toc-text">3.6 获取帮助</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000095-简明Python教程-3.最初的步骤" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-3.最初的步骤</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="3-1-简介"><a href="#3-1-简介" class="headerlink" title="3.1 简介"></a>3.1 简介</h1><p>编写一个传统的“Hello World”程序。<br>两种方式：1、交互式的带提示符的解释器；2、源文件</p>
+<h1 id="3-2-使用带提示符的解释器"><a href="#3-2-使用带提示符的解释器" class="headerlink" title="3.2 使用带提示符的解释器"></a>3.2 使用带提示符的解释器</h1><p>1、在命令行的shell提示符下，输入<strong> python </strong>，(或使用IDLE程序)；<br>2、输入 print ‘Hello World’，回车。<br>Python会在下一行立即输出单词Hello World。<br>* Linux/BSD shell按Ctrl-d退出提示符，Windows按Ctrl-z退出。</p>
+<h1 id="3-3-挑选一个编辑器"><a href="#3-3-挑选一个编辑器" class="headerlink" title="3.3 挑选一个编辑器"></a>3.3 挑选一个编辑器</h1><p>要有语法加亮功能。<br>Windows:IDLE Linux:Vim/Emacs<br>可在 <a href="https://wiki.python.org/moin" target="_blank" rel="noopener">https://wiki.python.org/moin</a> 查看详尽的Python编辑器和IDE列表。</p>
+<h1 id="3-4-使用源文件"><a href="#3-4-使用源文件" class="headerlink" title="3.4 使用源文件"></a>3.4 使用源文件</h1><p>将下面这段程序保存为helloworld.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># FileName : helloworld.py</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Hello World'</span></span><br></pre></td></tr></table></figure>
+<p>打开shell(Linux终端或DOS提示符)，键入命令 <strong> python <em> helloworld.py </em> </strong>；<br>如果使用IDLE，点击菜单的Edit -&gt; Run Script或Ctrl-F5，会看到输出Hello World。</p>
+<p><strong> 输出： </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python helloworld.py</span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure></p>
+<p>注意：<br>1、确保键入的程序准确无误，Python是大小写敏感的，即print与Print是不一样的。<br>2、确保每一行的开始字符前没有空格或制表符。</p>
+<p><strong> 如何工作： </strong><br>前两行被称作注释，任何在#号右面的内容都是注释。<br>Python至少应当有第一行那样的特殊注释：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br></pre></td></tr></table></figure></p>
+<p>它被称作组织行——头两个字符是#!，后面跟着一个程序。告诉Linux/Unix系统当执行程序时应该运行哪个解释器。<br>跟在注释之后的是一句Python语句，打印”Hello World”，print是操作符，”Hello World”称作字符串。</p>
+<h1 id="3-5-可执行的Python程序"><a href="#3-5-可执行的Python程序" class="headerlink" title="3.5 可执行的Python程序"></a>3.5 可执行的Python程序</h1><p>对于Linux/Unix系统，首先需要通过chmod命令给程序可执行的许可，然后运行程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ chmod a+x helloworld.py</span><br><span class="line">$ ./helloworld.py</span><br><span class="line">Hellow World</span><br></pre></td></tr></table></figure>
+<p>chmod命令用来改变文件的模式，给系统中所有用户这个源文件的执行许可。<br>然后通过指定源文件的位置来执行程序，使用 ./ 表示程序位于当前目录。</p>
+<p>可以通过添加目录到PATH来实现从各个位置运行程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ PATH = <span class="variable">$PATH</span>:/home/swaroop/mydir</span><br><span class="line">$ cp helloworld.py /home/swaroop/mydir</span><br><span class="line">$ helloworld </span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+<p>* 对于Python来说，程序、脚本、软件指的是同一个东西。</p>
+<h1 id="3-6-获取帮助"><a href="#3-6-获取帮助" class="headerlink" title="3.6 获取帮助"></a>3.6 获取帮助</h1><p>使用内建的help功能，获得Python函数或语句的快速帮助信息。<br>如：<br><code>help(str)</code> 获取str类的帮助。<br>* 按q退出。<br><code>Help(&#39;print&#39;)</code> 获取print操作符的帮助。<br>* print上使用了引号，Python可以理解希望获取关于print的帮助而不是想要打印东西。</p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000094-简明Python教程-2.安装Python/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000096-简明Python教程-4.基本概念/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

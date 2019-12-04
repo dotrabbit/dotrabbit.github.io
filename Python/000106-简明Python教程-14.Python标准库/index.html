@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-14.Python标准库 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14-1-简介"><span class="toc-text">14.1 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-2-sys模块"><span class="toc-text">14.2 sys模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行参数"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作"><span class="toc-text">如何工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多sys的内容"><span class="toc-text">更多sys的内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-3-os模块"><span class="toc-text">14.3 os模块</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000106-简明Python教程-14.Python标准库" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-14.Python标准库</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.06.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="14-1-简介"><a href="#14-1-简介" class="headerlink" title="14.1 简介"></a>14.1 简介</h1><p>Python标准库是随Python附带安装的，包含大量有用的模块<br>熟悉Python标准库十分重要，可以简单快捷地解决大多数问题<br>Python附带安装的文档中，Python标准库一节可以了解Python标准库中所有模块的完整内容</p>
+<h1 id="14-2-sys模块"><a href="#14-2-sys模块" class="headerlink" title="14.2 sys模块"></a>14.2 sys模块</h1><p>sys模块包含系统对应的功能，如已经学习的包含命令行参数sys.argv列表</p>
+<h2 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: cat.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readfile</span><span class="params">(filename)</span>:</span></span><br><span class="line">    <span class="string">'''Print a file to the standard output.'''</span></span><br><span class="line">    f = file(filename)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        line = f.readline()</span><br><span class="line">        <span class="keyword">if</span> len(line) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">print</span> line, <span class="comment"># notice comma</span></span><br><span class="line">    f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Script starts from here</span></span><br><span class="line"><span class="keyword">if</span> len(sys.argv) &lt; <span class="number">2</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'No action specified.'</span></span><br><span class="line">    sys.exit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> sys.argv[<span class="number">1</span>].startswith(<span class="string">'--'</span>):</span><br><span class="line">    option = sys.argv[<span class="number">1</span>][<span class="number">2</span>:]</span><br><span class="line">    <span class="comment"># fetch sys.argv[1] but without the first two characters</span></span><br><span class="line">    <span class="keyword">if</span> option == <span class="string">'version'</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Version 1.2'</span></span><br><span class="line">    <span class="keyword">elif</span> option == <span class="string">'help'</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'''\</span></span><br><span class="line"><span class="string">This program prints files to the standard output.</span></span><br><span class="line"><span class="string">Any number of files can be specified.</span></span><br><span class="line"><span class="string">Options include:</span></span><br><span class="line"><span class="string">  --version : Prints the version number</span></span><br><span class="line"><span class="string">  --help    : Display this help'''</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Unknown option.'</span></span><br><span class="line">    sys.exit()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> sys.argv[<span class="number">1</span>:]:</span><br><span class="line">        readfile(filename)</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ python cat.py</span><br><span class="line">No action specified.</span><br><span class="line"></span><br><span class="line">$ python cat.py --<span class="built_in">help</span></span><br><span class="line">This program prints files to the standard output.</span><br><span class="line">Any number of files can be specified.</span><br><span class="line">Options include:</span><br><span class="line">  --version : Prints the version number</span><br><span class="line">  --<span class="built_in">help</span>    : Display this <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">$ python cat.py --version</span><br><span class="line">Version 1.2</span><br><span class="line"></span><br><span class="line">$ python cat.py --nonsense</span><br><span class="line">Unknown option.</span><br><span class="line"></span><br><span class="line">$ python cat.py poem.txt</span><br><span class="line">Programming is fun</span><br><span class="line">When the work is <span class="keyword">done</span></span><br><span class="line"><span class="keyword">if</span> you wanna make your work also fun:</span><br><span class="line">        use Python!</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>程序实现Linux/Unix系统中的<strong>cat</strong>命令，打印输出指明的文本文件内容<br>在Python程序运行时，即不在交互模式下，sys.argv列表中至少有一个项目，即当前运行的程序名称，作为sys.argv[0]，其他命令行参数在此项目之后<br>程序提供了选项来提供更多内容，使用第一个参数检验程序选项<br>如果使用–version选项，则程序会打印版本号，如果使用–help选项，程序打印程序的解释<br>使用sys.exit函数退出运行的程序(参见help(sys.exit))<br>如果提供文件名，程序简单地打印出每个文件的每一行，按照命令行中的顺序逐个文件打印<br>(cat是concatenate的缩写，如它的名字，可以输出打印一个文件，或把两个及以上文件连接在一起打印)</p>
+<h2 id="更多sys的内容"><a href="#更多sys的内容" class="headerlink" title="更多sys的内容"></a>更多sys的内容</h2><p>sys.version字符串，安装的Python版本信息<br>sys.version_info元组，以元组形式给出安装的Python版本信息<br>sys.stdin、sys.stdout、sys.stderr分别对应程序的标准输入、标准输出、标准错误流</p>
+<h1 id="14-3-os模块"><a href="#14-3-os模块" class="headerlink" title="14.3 os模块"></a>14.3 os模块</h1><p>包括普遍的操作系统功能，可以保证程序平台无关，即不需改动，就可以在Linux和Windows下运行<br>例如:<br>os.sep字符串，提供操作系统特定的路径分割符<br>os.name字符串，指示正在使用的平台。如Windows返回’nt’，Linux/Unix返回’posix’<br>os.getcwd()，得到当前工作目录，即当前Python脚本工作的目录路径<br>os.getenv()，读取环境变量<br>os.putenv()，设置环境变量<br>os.listdir()，返回制定目录下的所有文件和目录名<br>os.remove()，删除一个文件<br>os.system()，运行shell命令<br>os.linesep字符串，给出当前平台使用的行终止符。如Windows使用’\r\n’，Linux使用’\n’，Mac使用’\r’<br>os.path.split()，返回一个路径的目录名和文件名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; os.path.split(<span class="string">'/home/swaroop/byte/code/poem.txt'</span>)</span><br><span class="line">(<span class="string">'/home/swaroop/byte/code'</span>, <span class="string">'poem.txt'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>os.path.isfile()，检验给出的路径是不是文件<br>os.path.isdir()，检验给出的路径是不是目录<br>os.path.exists()，检验给出的路径是否存在<br>可以利用Python标准文档来探索相关函数和变量的详细知识，或使用help(sys)</p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000105-简明Python教程-13.异常/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000107-简明Python教程-15.更多Python的内容/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

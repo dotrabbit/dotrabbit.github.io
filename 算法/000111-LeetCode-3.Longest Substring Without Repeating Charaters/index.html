@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>LeetCode-3.Longest Substring Without Repeating Charaters | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="算法,LeetCode,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#翻译"><span class="toc-text">翻译</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解"><span class="toc-text">解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二"><span class="toc-text">方法二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法三"><span class="toc-text">方法三</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000111-LeetCode-3.Longest Substring Without Repeating Charaters" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">LeetCode-3.Longest Substring Without Repeating Charaters</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>Given a string, find the length of the <strong> longest substring </strong> without repeating characters.</p>
+<p><strong>Examples:</strong></p>
+<p>Given <strong> “abcabcbb” </strong>, the answer is <strong> “abc” </strong>, which the length is 3.</p>
+<p>Given <strong> “bbbbb” </strong>, the answer is <strong> “b” </strong>, with the length of 1.</p>
+<p>Given <strong> “pwwkew” </strong>, the answer is <strong> “wke” </strong>, with the length of 3. Note that the answer must be a <strong> substring </strong>, <strong> “pwke” </strong> is a subsequence and not a substring.</p>
+<h1 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h1><p>给出一个字符串，找到其没有重复字符的<strong> 最长子串 </strong>的长度。<br>例如：<br>给出 <strong> “abcabcbb” </strong>，答案是<strong> “abc” </strong>，其长度为3。<br>给出 <strong> “bbbbb” </strong>，答案是<strong> “b” </strong>，其长度为1。<br>给出 <strong> “pwwkew” </strong>，答案是<strong> “wke” </strong>，其长度为3。<br>注意答案必须是一个<strong> 子字符串 </strong>，<strong> “pwke” </strong>是一个序列而不是子串。</p>
+<h1 id="解"><a href="#解" class="headerlink" title="解"></a>解</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>看到题目第一反应就是滑动窗口法，设定左和右两个指针left和right，作为窗口的起止。<br>right不断步进，每次判断新字符是否已经出现过，如果有重复，则循环步进left，直至找到重复字符所在位置停止。<br>利用一个set记录已经出现过的字符，当left和right步进时更新：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        Set&lt;Character&gt; chars = <span class="keyword">new</span> HashSet&lt;Character&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (right &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (chars.contains(s.charAt(right))) &#123;</span><br><span class="line">                res = Math.max(res, right - left);</span><br><span class="line">                <span class="keyword">while</span> (s.charAt(left) != s.charAt(right)) &#123;</span><br><span class="line">                    chars.remove(s.charAt(left));</span><br><span class="line">                    left++;</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                right++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                chars.add(s.charAt(right));</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = Math.max(res, right - left);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>时间复杂度为2n，即O(n)</p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>将方法一种的set，替换为一个boolean数组，记录每个字符是否出现过。<br>在Java中，char类型代表一个unicode字符，占两字节，16位，共65536个字符。<br>转换为int后输出可见：<br>Character.MIN_VALUE = 0<br>Character.MAX_VALUE = 65535<br>将所有字符写入文件可知，A-Z为68-93，a-z为100-125。<br>而题中未指定字符范围，因此，设定范围从空格符(32)开始，到“~”符(126)结束，共95个字符，概括了常见字符，也是键盘上可以打出的所有半角字符：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[] chars = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">95</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (right &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (chars[s.charAt(right) - <span class="string">' '</span>] == <span class="keyword">true</span>) &#123;</span><br><span class="line">                res = Math.max(res, right - left);</span><br><span class="line">                <span class="keyword">while</span>(s.charAt(left) != s.charAt(right)) &#123;</span><br><span class="line">                    chars[s.charAt(left) - <span class="string">' '</span>] = <span class="keyword">false</span>;</span><br><span class="line">                    left++;</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                right++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                chars[s.charAt(right) - <span class="string">' '</span>] = <span class="keyword">true</span>;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = Math.max(res, right - left);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>时间复杂度为2n，即O(n)</p>
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>将方法二中的boolean数组，替换为一个int数组，记录遇到的每个字符，最近一次出现的index。<br>当right遇到重复字符时，直接将left设定为index+1，省略循环操作，提高效率：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] locs = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">95</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">95</span>; i++) locs[i] = -<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (right &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (locs[s.charAt(right) - <span class="string">' '</span>] &gt;= left &amp;&amp; left != right) &#123; <span class="comment">// 新字符在当前子串中;当字串长度为1时不更新left</span></span><br><span class="line">                res = Math.max(res, right - left);</span><br><span class="line">                left = locs[s.charAt(right) - <span class="string">' '</span>] + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            locs[s.charAt(right) - <span class="string">' '</span>] = right;</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        res = Math.max(res, right - left);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>时间复杂度为n+C，即O(n)</p>
+<p>参考：<br><a href="http://www.cnblogs.com/dollarzhaole/p/3155712.html" target="_blank" rel="noopener">http://www.cnblogs.com/dollarzhaole/p/3155712.html</a><br><a href="http://articles.leetcode.com/longest-substring-without-repeating-characters" target="_blank" rel="noopener">http://articles.leetcode.com/longest-substring-without-repeating-characters</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/工具/000110-Mac工具/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/数据库/000112-Oracle中查询存储过程调用关系/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

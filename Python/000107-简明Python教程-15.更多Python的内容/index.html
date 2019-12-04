@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-15.更多Python的内容 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15-1-特殊的方法"><span class="toc-text">15.1 特殊的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-2-单语句块"><span class="toc-text">15.2 单语句块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-3-列表综合"><span class="toc-text">15.3 列表综合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用列表综合"><span class="toc-text">使用列表综合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-4-在函数中接收元组和列表"><span class="toc-text">15.4 在函数中接收元组和列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-5-lambda形式"><span class="toc-text">15.5 lambda形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-1"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-1"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-6-exec和eval语句"><span class="toc-text">15.6 exec和eval语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-7-assert语句"><span class="toc-text">15.7 assert语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-8-repr函数"><span class="toc-text">15.8 repr函数</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000107-简明Python教程-15.更多Python的内容" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-15.更多Python的内容</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.06.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="15-1-特殊的方法"><a href="#15-1-特殊的方法" class="headerlink" title="15.1 特殊的方法"></a>15.1 特殊的方法</h1><p>在类中，有一些特殊的方法具有特殊的意义，例如__init__和__del__方法<br>一般来说，特殊的方法都被用来模仿某个行为<br>例如，想为自己的类使用myclass[key]这样的索引操作，只需要实现__getitem__()方法即可(Python对list类就是这样做的)<br>下表列出了一些有用的特殊方法，Python参考手册中有所有特殊方法的庞大列表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>__init__(self,…)</td>
+<td>这个方法在新建对象恰好要被返回使用之前被调用。</td>
+</tr>
+<tr>
+<td>__del__(self)</td>
+<td>恰好在对象要被删除之前调用。</td>
+</tr>
+<tr>
+<td>__str__(self)</td>
+<td>在我们对对象使用print语句或是使用str()的时候调用。</td>
+</tr>
+<tr>
+<td>__lt__(self,other)</td>
+<td>当使用 小于 运算符（&lt;）的时候调用。类似地，对于所有的运算符（+，&gt;等等）都有特殊的方法。</td>
+</tr>
+<tr>
+<td>__getitem__(self,key)</td>
+<td>使用x[key]索引操作符的时候调用。</td>
+</tr>
+<tr>
+<td>__len__(self)</td>
+<td>对序列对象使用内建的len()函数的时候调用。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="15-2-单语句块"><a href="#15-2-单语句块" class="headerlink" title="15.2 单语句块"></a>15.2 单语句块</h1><p>Python中每一个语句块，是通过缩进层次来与其他块区分开的<br>但当语句块只包含一句语句时，可以在条件语句或循环语句的同一行指明它：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; flag = True</span><br><span class="line">&gt;&gt;&gt; <span class="keyword">if</span> flag: <span class="built_in">print</span> <span class="string">'Yes'</span></span><br><span class="line">...</span><br><span class="line">Yes</span><br></pre></td></tr></table></figure></p>
+<p>单个语句被直接使用，而不是作为一个独立的块，这样程序显得简短<br>但强烈建议不要使用这种缩略方法，主要理由是使用恰当地缩进可以方便地添加额外的语句<br>并且在使用交互模式的Python解释器时会出现非预期的效果</p>
+<h1 id="15-3-列表综合"><a href="#15-3-列表综合" class="headerlink" title="15.3 列表综合"></a>15.3 列表综合</h1><p>通过列表综合，可以从一个已有的列表，导出一个新的列表<br>例如，有一个数的列表，想得到一个对应的列表，使其中所有大于2的数都是原来的2倍</p>
+<h2 id="使用列表综合"><a href="#使用列表综合" class="headerlink" title="使用列表综合"></a>使用列表综合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: list_comprehension.py</span></span><br><span class="line"></span><br><span class="line">listone = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">listtwo = [<span class="number">2</span>*i <span class="keyword">for</span> i <span class="keyword">in</span> listone <span class="keyword">if</span> i &gt; <span class="number">2</span>]</span><br><span class="line"><span class="keyword">print</span> listtwo</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python list_comprehension.py</span><br><span class="line">[6, 8]</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>为满足条件(if i &gt; 2)的数指定了一个操作(2*i)，从而导出一个新的列表<br>原来的列表并没有发生变化<br>列表综合相对于循环，提供了一种更加精确、简洁、清楚的方法来完成相同的工作</p>
+<h1 id="15-4-在函数中接收元组和列表"><a href="#15-4-在函数中接收元组和列表" class="headerlink" title="15.4 在函数中接收元组和列表"></a>15.4 在函数中接收元组和列表</h1><p>在函数要接收元组或字典形式的参数的时候，可以使用*和**前缀<br>这种方法在函数需要获取可变数量的参数的时候特别有用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def powersum(power, *args):</span><br><span class="line">...     <span class="string">''</span><span class="string">'Return the sum of each argument raised to specified power.'</span><span class="string">''</span></span><br><span class="line">...     total = 0</span><br><span class="line">...     <span class="keyword">for</span> i <span class="keyword">in</span> args:</span><br><span class="line">...          total += pow(i, power)</span><br><span class="line">...     <span class="built_in">return</span> total</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; powersum(2, 3, 4)</span><br><span class="line">25</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; powersum(2, 10)</span><br><span class="line">100</span><br></pre></td></tr></table></figure></p>
+<p>args变量前有*前缀，所有多余的参数都会作为一个元组，存储在args中<br>如果使用的是**前缀，所有多余的参数会被认为是一个字典的键值对</p>
+<h1 id="15-5-lambda形式"><a href="#15-5-lambda形式" class="headerlink" title="15.5 lambda形式"></a>15.5 lambda形式</h1><p>lambda语句用来创建新的函数对象，并在运行时返回它们：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: lambda.py</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> s: s*n</span><br><span class="line"></span><br><span class="line">twice = make_repeater(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> twice(<span class="string">'word'</span>)</span><br><span class="line"><span class="keyword">print</span> twice(<span class="number">5</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python lambda.py</span><br><span class="line">wordword</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-1"><a href="#如何工作-1" class="headerlink" title="如何工作"></a>如何工作</h2><p>make_repeater函数在运行时创建新的函数对象，并返回它<br>本质上，lambda需要一个参数，后面仅跟<strong>单个表达式</strong>作为函数体，并由新建的函数返回表达式的值<br>注意，即便是print语句也不能用在lambda形式中，只能使用<strong>表达式</strong></p>
+<h1 id="15-6-exec和eval语句"><a href="#15-6-exec和eval语句" class="headerlink" title="15.6 exec和eval语句"></a>15.6 exec和eval语句</h1><p>exec语句用来执行储存在字符串或文件中的Python语句<br>例如，可以在运行时生成一个包含Python代码的字符串，然后使用exec语句执行这些语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="built_in">exec</span> <span class="string">'print "Hello World"'</span></span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure></p>
+<p>evel语句用来计算存储在字符串中的有效Python表达式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="built_in">eval</span>(<span class="string">'2*3'</span>)</span><br><span class="line">6</span><br></pre></td></tr></table></figure></p>
+<h1 id="15-7-assert语句"><a href="#15-7-assert语句" class="headerlink" title="15.7 assert语句"></a>15.7 assert语句</h1><p>assert语句用来声明某个条件是真的<br>例如，检验一个列表中至少有一个元素，并在非真的时候引发一个错误，则应使用assert语句，当assert语句失败时，会引发一个AssertionError<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; mylist = [<span class="string">'item'</span>]</span><br><span class="line">&gt;&gt;&gt; assert len(mylist) &gt;= 1</span><br><span class="line">&gt;&gt;&gt; mylist.pop()</span><br><span class="line"><span class="string">'item'</span></span><br><span class="line">&gt;&gt;&gt; assert len(mylist) &gt;= 1</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line 1, <span class="keyword">in</span> ?</span><br><span class="line">AssertionError</span><br></pre></td></tr></table></figure></p>
+<h1 id="15-8-repr函数"><a href="#15-8-repr函数" class="headerlink" title="15.8 repr函数"></a>15.8 repr函数</h1><p>repr函数用来取得对象的规范字符串表示<br>反引号(也称转换符)也可以完成相同的功能，大多数时候有eval(repr(object)) == object<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; i = []</span><br><span class="line">&gt;&gt;&gt; i.append(<span class="string">'item'</span>)</span><br><span class="line">&gt;&gt;&gt; `i`</span><br><span class="line"><span class="string">"['item']"</span></span><br><span class="line">&gt;&gt;&gt; repr(i)</span><br><span class="line"><span class="string">"['item']"</span></span><br></pre></td></tr></table></figure></p>
+<p>基本上，repr函数和反引号用来获取对象的可打印的表达形式<br>可以通过定义类的__repr__方法，来控制对象在被repr函数调用时返回的内容</p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000106-简明Python教程-14.Python标准库/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000108-Python爬取Arxiv论文/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

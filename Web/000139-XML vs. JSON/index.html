@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>XML vs. JSON | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Web,XML,JSON,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XML"><span class="toc-text">XML</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JSON"><span class="toc-text">JSON</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共同点"><span class="toc-text">共同点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#比较"><span class="toc-text">比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、可读性"><span class="toc-text">1、可读性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、扩展性"><span class="toc-text">2、扩展性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、编解码"><span class="toc-text">3、编解码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、数据体积"><span class="toc-text">4、数据体积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、应用"><span class="toc-text">5、应用</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000139-XML vs. JSON" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">XML vs. JSON</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>关于XML与JSON的区别和比较，网上有很多讨论，甚至争论。<br>有人坚为JSON终会取代XML，只是时候未到，有人认为JSON天生不如XML。<br>我认为各有适用场景，应该会在很长一段时间内同生共存，只能尝试梳理一些认知。</p>
+<h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p>全称Extensible Markup Language，用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。</p>
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>全称JavaScript Object Notation，是一种轻量级的数据交换格式，可参见《关于JSON》一文</p>
+<h1 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h1><p>1、跨平台和语言<br>2、具有很高的可读性<br>3、可扩展<br>4、各平台和语言都有原生支持<br>5、纯文本<br>6、不作为<br>7、主要用于传输数据，可跨系统<br>8、广泛使用</p>
+<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><p>对应于共同点，可以梳理出比较一下不同<br>主要考量：是否可设计、使用是否高效、是否可转换、转换是否可逆，最后得出适用场景等</p>
+<h2 id="1、可读性"><a href="#1、可读性" class="headerlink" title="1、可读性"></a>1、可读性</h2><p>可读性分两类，对人的可读性，和对机器的可读性。对机器的可读性放到第3点编解码中讨论，这里只讨论对人的可读性。<br>网上对XML和JSON的可读性意见不一，如果举办投票可能会各获得50%的票数<br>个人认为对可读性的讨论应该分情境：<br>a. 在格式化、不使用第三方阅读软件的情况下，表示相同信息的XML比JSON阅读性强一些<br>因为XML开闭标签对称，树形结构清晰，更加亲人；而JSON相对更加亲机器<br>b. 但同时，有过XML传输相关经验的开发人员应该都体会过，例如在plsql中，以纯文本而不是xml格式查看的时候，从一个连续的XML串中，基本无法人工识别任何信息，而JSON得益于服务器客户端传输的先天特性，即使将所有信息都写作一行，同样拥有一定的可阅读能力<br>综上，XML的可读性略强于JSON</p>
+<h2 id="2、扩展性"><a href="#2、扩展性" class="headerlink" title="2、扩展性"></a>2、扩展性</h2><p>XML：<br>XML中的X就代表扩展的意思，其设计理念就是具有高度的扩展性<br>其展现信息的核心特性为元素标签、元素属性、元素内容、树形结构，且扩展元素后不会影响解析<br>JSON：<br>JSON通过键值对以及对象嵌套，同样可以实现元素标签、元素内容和属性结构的功能<br>对于元素属性，可以提供一种内置的元数据的功能<br>JSON可以通过额外的设计(例如增加嵌套、转换时加入特殊符号标记)，也可以包含任何XML的属性信息，只是在简单性和阅读性上有所损失<br>但有些场景XML比JSON更适合，比如随意打开一个网页的源HTML，改成JSON，工作过程和结果都不会令人满意<br>扩展：<br>对于相同标签，XML拥有顺序性，JSON同样可以实现，一般为数组，但失去了可逆能力，如果想要保留，则需要更复杂的设计。另外，当增加一个新的同名标签时，XML解析程序可以不受影响，而JSON的value可能会由字符串等变为数组，程序受到影响；另一方面，XML实现数组一般使用重复标签，或约定的分割符，而JSON天然支持数组<br>基本上，任何XML可以表示的数据都可以用JSON表示，任何JSON可以表示的数据XML也都可以表示<br>但在描述复杂结构时，JSON没有XML清晰简单<br>综上，XML的扩展性较强一些</p>
+<h2 id="3、编解码"><a href="#3、编解码" class="headerlink" title="3、编解码"></a>3、编解码</h2><p>编码：<br>人工编码：XML和JSON都可以轻易地通过人工手动编码<br>机器编码：1、XML拥有成熟的API，但JSON也成长迅速；2、XML通常需要按照设计逐个元素填充，JSON可以直接转换对象<br>解码：<br>XML解析可以使用DOM或SAX方式，其中，SAX可以逐步解析，适用于大规模数据的解析，JSON不行<br>除了像XML一样逐层逐个解析外，JSON还可以轻易地映射为Java等语言的內建数据结构或对象，XML不行<br>综上，JSON的编解码能力较强，但解析大规模数据时可能会有性能瓶颈</p>
+<h2 id="4、数据体积"><a href="#4、数据体积" class="headerlink" title="4、数据体积"></a>4、数据体积</h2><p>因为JSON中不需要结束标签，额外信息少，所以往往比XML的数据体积要小，传输速率更高</p>
+<h2 id="5、应用"><a href="#5、应用" class="headerlink" title="5、应用"></a>5、应用</h2><p>由于历史的发展，XML是web services的既定标准，广泛用于系统间的数据交换<br>JSON天生适合前端解析，广泛应用于服务器与客户端的数据交换，包括网页和移动端<br>建议：<br>1、对于复杂的数据结构使用XML，简单的数据结构可采用JSON<br>2、在互联网应用中数据传输中，提倡使用JSON<br>3、针对前后端的差异，可以在服务端使用XML，在前端使用JSON，两者之间的转换在服务器端完成，各取所长<br>对于选型，<br>1、首要决定因素是是否有遗留习惯，必须选择XML<br>2、其次看数据复杂度，如果不是特别复杂，尽量用JSON</p>
+<p>参考：<br><a href="http://www.w3school.com.cn/xml/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/xml/index.asp</a><br><a href="http://www.cnblogs.com/yank/p/4028266.html" target="_blank" rel="noopener">http://www.cnblogs.com/yank/p/4028266.html</a><br><a href="http://bbs.csdn.net/topics/391013413" target="_blank" rel="noopener">http://bbs.csdn.net/topics/391013413</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/工具/000138-Git核心概念/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Web/000140-关于REST/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Git核心概念 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="工具,Git,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#工作区和暂存区"><span class="toc-text">工作区和暂存区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提交"><span class="toc-text">提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看"><span class="toc-text">查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回退"><span class="toc-text">回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践"><span class="toc-text">实践</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版本"><span class="toc-text">版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令-1"><span class="toc-text">命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践-1"><span class="toc-text">实践</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分支"><span class="toc-text">分支</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令-2"><span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看-1"><span class="toc-text">查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并"><span class="toc-text">合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#暂存和恢复"><span class="toc-text">暂存和恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除-1"><span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践-2"><span class="toc-text">实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#合并-1"><span class="toc-text">合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换"><span class="toc-text">切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#暂存"><span class="toc-text">暂存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除-2"><span class="toc-text">删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践-3"><span class="toc-text">实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、git-clone"><span class="toc-text">1、git clone</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介-1"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#协议"><span class="toc-text">协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践-4"><span class="toc-text">实践</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、git-remote"><span class="toc-text">2、git remote</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看-2"><span class="toc-text">查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加"><span class="toc-text">添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改名"><span class="toc-text">改名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除-3"><span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、git-fetch"><span class="toc-text">3、git fetch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-3"><span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践-5"><span class="toc-text">实践</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、git-pull"><span class="toc-text">4、git pull</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tracking"><span class="toc-text">tracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-4"><span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践-6"><span class="toc-text">实践</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、git-push"><span class="toc-text">5、git push</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-5"><span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践-7"><span class="toc-text">实践</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地分支与远程分支实践"><span class="toc-text">本地分支与远程分支实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地分支"><span class="toc-text">本地分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程分支"><span class="toc-text">远程分支</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签"><span class="toc-text">标签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令-6"><span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看-3"><span class="toc-text">查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-1"><span class="toc-text">添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除-4"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送"><span class="toc-text">推送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践-8"><span class="toc-text">实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加标签"><span class="toc-text">添加标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除远程标签"><span class="toc-text">删除远程标签</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义Git"><span class="toc-text">自定义Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、git-config"><span class="toc-text">1、git config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、git-ignore"><span class="toc-text">2、git ignore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、配置别名"><span class="toc-text">3、配置别名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继续深入"><span class="toc-text">继续深入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展阅读"><span class="toc-text">拓展阅读</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000138-Git核心概念" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Git核心概念</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.02.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h1><p>Git和其他版本控制系统的不同之一就是有暂存区的概念。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><strong>工作区</strong>(Working Directory)，电脑里的工作目录<br><strong>版本库</strong>(Repository)，工作区下的隐藏目录.git<br>版本库.git包括<strong>暂存区</strong>(stage，或index)，git自动创建的master分支，以及指向当前分支的指针HEAD等</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>在本地修改文件后，先提交到暂存区，再从暂存区提交到当前分支</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><p>添加文件修改到暂存区：git add &lt;file(s)&gt;<br>提交暂存区的所有内容到当前分支：git commit -m “&lt;description&gt;”</p>
+<h3 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h3><p>当前仓库状态，并提示可选的操作：git status<br>查看工作文件与暂存区的区别：git diff<br>查看暂存区与上一次提交的区别：git diff –cached</p>
+<h3 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h3><p>从暂存区到工作区(回退工作区文件到上一次git add)：git checkout – &lt;file&gt;<br>从当前分支到暂存区(回退暂存区文件到某一版本的git commit)：git reset &lt;commit id&gt; &lt;file&gt;<br>当前分支回退版本(如下节)：git reset –hard &lt;commit id&gt;</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>删除工作区和暂存区：git rm &lt;file&gt;</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>先在工作区中修改文件，然后利用git status命令查看当前仓库状态(git status命令在仓库状态的同时，会提示目前可以采取的动作)，然后用git add命令将一个或多个改动添加到暂存区，最后用git commit命令将暂存区所有改动提交到当前分支。<br>如果在git add后、git commit之前，又更改了工作区文件，则此时git add会覆盖第一次add，工作区和暂存区一致，与最近的commit不一致；git commit会提交第一次add，暂存区和最近commit一致，与工作区不一致<br>删除文件时，可在本地删除，然后提交到暂存区，再提交到分支；或使用git rm命令同时删除本地和暂存区文件，然后提交到分支</p>
+<h1 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h1><p>每次commit都会生成一个版本<br>每个版本都对应着一个版本号(commit id)，Git使用SHA1计算出的一个十六进制表示的数字作为commit id<br>HEAD表示当前版本，上一个版本为HEAD^，上上个版本为HEAD^^，往上100个版本为HEAD~100<br>当在Git中回退版本时，Git内部只是移动了HEAD指针，并可以通过参数，选择是否重置暂存区和工作树</p>
+<h2 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h2><p>显示历史版本信息：git log<br>显示历史版本信息(每个版本一行，只显示版本号和注释)：git log –pretty=oneline<br>回退到上一个版本(回退HEAD)：git reset –soft HEAD^<br>回退到上一个版本(回退HEAD，暂存区)：git reset HEAD^<br>回退到上一个版本(回退HEAD，暂存区和工作树)：git reset –hard HEAD^<br>回退到某一个版本：git reset &lt;coimmit id&gt;<br>查看所有动作：git reflog</p>
+<h2 id="实践-1"><a href="#实践-1" class="headerlink" title="实践"></a>实践</h2><p>一般使用git log查看历史版本信息，然后回退到某一版本，此时再使用git log命令则只能显示当前回退到的版本的历史版本，如果想恢复到相对当前版本较新的版本，需要使用git reflog命令，查看历史动作，其中包含版本号，利用版本号进行版本“前进”</p>
+<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><p>分支功能可以使产品保证稳定版本，同时开发新功能版本，并且可以实现多个新功能并行开发<br>很多版本管理系统都有分支的功能，然而SVN等工具创建分支时会拷贝整个工作区，所以效率很低，Git使用类似指针的概念，无论是上述版本回退，还是创建分支等功能，在Git中都只是一个指针移动的操作，效率非常高<br>Git版本库中的指针名称叫HEAD，指向当前分支的当前版本。如前所述，可以用HEAD^、HEAD~100来表示前几个版本<br>当commit时，改动被提交到HEAD，HEAD再提交到其指向的分支，因此，改动HEAD指向即可改变提交的分支<br>HEAD默认指向Git自动生成的master分支，可以通过命令新建分支、切换分支、合并分支</p>
+<h2 id="命令-2"><a href="#命令-2" class="headerlink" title="命令"></a>命令</h2><h3 id="查看-1"><a href="#查看-1" class="headerlink" title="查看"></a>查看</h3><p>查看本地分支：git branch，当前分支前以星号标记<br>查看远程分支：git branch -r<br>查看本地和远程分支：git branch -a<br>创建和切换：<br>创建分支：git branch &lt;branch-name&gt;<br>切换分支：git checkout &lt;branch&gt;<br>创建并切换分支：git checkout -b &lt;branch&gt;</p>
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>合并指定分支到当前分支：git merge &lt;branch&gt;<br>禁用Fast-forward模式merge：git merge<br>查看分支合并图：git log –graph –pretty=oneline –abbrev-commit<br>放弃合并：git merge –abort</p>
+<h3 id="暂存和恢复"><a href="#暂存和恢复" class="headerlink" title="暂存和恢复"></a>暂存和恢复</h3><p>暂存工作区：git stash<br>查看暂存：git stash list<br>恢复暂存：git stash apply<br>删除暂存：git stash drop<br>恢复并删除暂存：git stash pop</p>
+<h3 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h3><p>删除分支：git branch -d &lt;branch&gt;<br>强制删除分支：git branch -D &lt;branch&gt;</p>
+<h2 id="实践-2"><a href="#实践-2" class="headerlink" title="实践"></a>实践</h2><h3 id="合并-1"><a href="#合并-1" class="headerlink" title="合并"></a>合并</h3><p>合并分支后，可以通过有两种情况(以从master分支上新建dev分支为例)：<br>1、dev改动并commit之后merge，master还没有commit过<br>1.a Fast-forward模式merge<br>1.b 禁用Fast-forward模式merge<br>2、dev改动并commit之后merge，而master也被改动并commit过<br>2.a 没有冲突，直接merge<br>2.b 有冲突，手动解决，merge<br>2.c 有冲突，放弃merge<br>对于1.a，master与dev其实是在一条线上开发，只不过dev比master超前一个commit，所以移动master指针到dev指针即可<br>对于1.b，因为1.a中只是简单移动，dev的信息并没有保存，所以在删除dev后，dev的分支信息将被丢弃，且分支合并图没有体现，可以使用git merge的–no-ff参数，强制禁用Fast-forward模式<br>对于2.a，两个分支分别有commit，行成两条分叉线，如果文件中没有冲突(即都有内容且不相同的行)，则可以直接合并<br>对于2.b，当提交merge命令后，Git中会存在一个MERGE_HEAD，此时分支处于合并过程中的状态，使用git status可以查看冲突，手动解决文件冲突后，使用git commit合并<br>对于2.c，如果不想解决冲突，可以选择放弃merge，使用git merge –abort删除MERGE_HEAD，恢复到使用merge命令之前的状态</p>
+<h3 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h3><p>工作树、暂存区和commit会随着分支切换而变化</p>
+<h3 id="暂存"><a href="#暂存" class="headerlink" title="暂存"></a>暂存</h3><p>git stash命令可以将目前的工作区、暂存区改动存储起来，此时使用git status命令查看，工作区是干净的<br>例如在dev分支开发一半，突然有bug修复工作，可以先暂存dev分支，然后从master新建一个bug修复分支，修复并提交到master后，切换回dev分支，恢复刚才的暂存，继续工作</p>
+<h3 id="删除-2"><a href="#删除-2" class="headerlink" title="删除"></a>删除</h3><p>当前分支无法删除<br>使用-d普通删除<br>对于有改动的分支，使用-D强制删除</p>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Git是分布式版本控制系统<br>同一个Git仓库，可以通过克隆分布到不同的机器上每台机器的版本库都一样，没有主次之分<br>可以从任何机器上克隆或拉取文件，例如本地目录、局域网服务器、GitHub等</p>
+<h2 id="实践-3"><a href="#实践-3" class="headerlink" title="实践"></a>实践</h2><p>通过git init生成的仓库没有远程仓库连接<br>可以直接git clone，或在git init后通过git remote add命令，与远程主机连接<br>一个本地仓库可与多个远程仓库连接<br>本地以远程主机名对主机进行区分，主机名只是本地对远程的称呼<br>git clone默认命名为origin，可手动指定；git remote add必须手动指定</p>
+<h2 id="1、git-clone"><a href="#1、git-clone" class="headerlink" title="1、git clone"></a>1、git clone</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>git clone命令从远程主机克隆一个版本库：git clone &lt;repo&gt; [&lt;dir&gt;]<br>第一个参数是远程主机的版本库地址<br>第二个参数是可选的，指定本地新建目录的名称，默认是远程主机版本库的名称<br>例如：git clone <a href="https://github.com/jquery/jquery.git" target="_blank" rel="noopener">https://github.com/jquery/jquery.git</a></p>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p>git clone支持多种协议，包括HTTP(s)、SSH、Git、本地文件协议等<br>例如：<br>git clone http[s]://example.com/path/to/repo.git/<br>git clone ssh://example.com/path/to/repo.git/<br>git clone git://example.com/path/to/repo.git/<br>git clone /opt/git/project.git<br>git clone file:///opt/git/project.git<br>git clone ftp[s]://example.com/path/to/repo.git/<br>git clone rsync://example.com/path/to/repo.git/<br>SSH协议还有一种写法：git clone [user@]example.com:path/to/repo.git/<br>通常，Git协议下载速度最快，SSH协议用于需要用户认证的场合<br>具体内容可见 <a href="https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols" target="_blank" rel="noopener">https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols</a></p>
+<h3 id="实践-4"><a href="#实践-4" class="headerlink" title="实践"></a>实践</h3><p>一般直接使用如上命令进行clone，此时远程主机默认命名为origin，如果想要指定名称(例如需要添加多台主机时)，可以使用-o, –origin参数<br>格式：git clone -o &lt;name&gt; &lt;repo&gt; [&lt;dir&gt;] 或 git clone –origin &lt;name&gt; &lt;repo&gt; [&lt;dir&gt;]<br>例子：git clone -o jQuery <a href="https://github.com/jquery/jquery.git" target="_blank" rel="noopener">https://github.com/jquery/jquery.git</a></p>
+<h2 id="2、git-remote"><a href="#2、git-remote" class="headerlink" title="2、git remote"></a>2、git remote</h2><p>用来执行远程主机添加和移除，和对远程主机名的增删改查</p>
+<h3 id="查看-2"><a href="#查看-2" class="headerlink" title="查看"></a>查看</h3><p>查看所有远程主机名：git remote<br>查看所有远程主机名及其网址：git remote -v<br>查看远程主机详细信息：git remote show &lt;name&gt;，指定远程主机名</p>
+<h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><p>添加远程主机：git remote add &lt;name&gt; &lt;url&gt;，分别指定远程主机名和主机地址</p>
+<h3 id="改名"><a href="#改名" class="headerlink" title="改名"></a>改名</h3><p>重命名远程主机：git remote rename &lt;old&gt; &lt;new&gt;，分别指定原主机名、新主机名</p>
+<h3 id="删除-3"><a href="#删除-3" class="headerlink" title="删除"></a>删除</h3><p>删除远程主机：git remote rm &lt;name&gt;，指定远程主机名</p>
+<h2 id="3、git-fetch"><a href="#3、git-fetch" class="headerlink" title="3、git fetch"></a>3、git fetch</h2><p>当远程主机有了更新(commit)时，将远程主机的更新取回本地<br>git fetch对本地分支没有影响<br>取回本地远程分支要以 远程主机名/分支名 的形式访问，例如 origin/master</p>
+<h3 id="命令-3"><a href="#命令-3" class="headerlink" title="命令"></a>命令</h3><p>取回：<br>取回默认名为origin远程主机的所有分支：git fetch<br>取回指定远程主机的某一分支：git fetch &lt;repo&gt; &lt;branch&gt;，分别指定远程主机名和分支名<br>合并：<br>在远程分支的基础上新建本地分支(并建立追踪关系)：git checkout -b &lt;branch name&gt; &lt;remote branch name&gt;<br>在本地已有分支上合并远程分支：git merge &lt;remote branch name&gt; 或 git rebase &lt;remote branch name&gt;<br>回忆：<br>查看所有远程分支：git branch -r<br>查看所有分支：git branch -a</p>
+<h3 id="实践-5"><a href="#实践-5" class="headerlink" title="实践"></a>实践</h3><p>通过git fetch获取到远程分支后，只能用git checkout -b在其基础上新建分支，并建立追踪；或用git merge/rebase合并到已有的本地分支，但不建立追踪</p>
+<h2 id="4、git-pull"><a href="#4、git-pull" class="headerlink" title="4、git pull"></a>4、git pull</h2><p>取回远程主机某个分支的更新，再与本地的指定分支合并<br>可理解为先git fetch，再git merge</p>
+<h3 id="tracking"><a href="#tracking" class="headerlink" title="tracking"></a>tracking</h3><p>在拉下和推送之前，本地分支与远程分支之间必须有追踪关系(tracking)<br>git clone &lt;repo&gt;和git checkout -b &lt;branch name&gt; &lt;remote branch name&gt;会自动建立相应分支之间的追踪关系<br>可使用git branch –set-upstream &lt;branch name&gt; &lt;remote branch name&gt;</p>
+<h3 id="命令-4"><a href="#命令-4" class="headerlink" title="命令"></a>命令</h3><p>取回某个远程主机的某个分支，并与本地的某个分支合并，但不建立追踪：<br>git pull &lt;remote name&gt; &lt;remote branch name&gt;:&lt;branch name&gt;</p>
+<h3 id="实践-6"><a href="#实践-6" class="headerlink" title="实践"></a>实践</h3><p>1、如果与当前分支合并，则可省略branch name：git pull &lt;remote name&gt; &lt;remote branch name&gt;<br>2、如果已经建立分支追踪关系，则可省略remote branch name：git pull &lt;remote name&gt;<br>3、如果当前分支只追踪了一个远程分支，则可省略remote name：git pull<br>4、使用rebase模式：git pull –rebase &lt;remote name&gt; &lt;remote branch name&gt;:&lt;branch name&gt;<br>5、如果远程分支已经删除，git pull不会删除本地分支，如果想删除，使用-p：<br>git pull -p，等于先git fetch –prune origin，再git fetch -p</p>
+<h2 id="5、git-push"><a href="#5、git-push" class="headerlink" title="5、git push"></a>5、git push</h2><p>将本地更新，推送到远程主机，与git pull命令相仿</p>
+<h3 id="命令-5"><a href="#命令-5" class="headerlink" title="命令"></a>命令</h3><p>推送本地的某个分支，到某个远程主机的某个分支，但不建立追踪：<br>git push &lt;remote name&gt; &lt;branch name&gt;:&lt;remote branch name&gt;<br>(本地分支和远程分支的熟悉怒与git pull命令相反)</p>
+<h3 id="实践-7"><a href="#实践-7" class="headerlink" title="实践"></a>实践</h3><p>1、推送策略<br>1.a 如果省略远程分支名，此时如果存在追踪关系直接推送，如果不存在则会新建远程分支：<br>git push &lt;remote name&gt; &lt;branch name&gt;<br>1.b 如果省略本地分支名，则删除指定的远程分支(可理解为推送一个空的本地分支到远程分支)：<br>git push &lt;remote name&gt; :&lt;remote branch&gt;，等于git push &lt;remote name&gt; –delete &lt;remote branch&gt;<br>1.c 如果当前分支与远程分支有追踪关系，则可省略本地分支和远程分支：git push &lt;remote name&gt;<br>1.d 如果当前分支只有一个追踪分支，则可继续省略主机名：git push<br>1.e 如果当前分支与多个主机存在追踪关系，可使用-u指定一个默认主机，进而直接使用git push而不加参数：git push -u &lt;remote name&gt; &lt;branch name&gt;，将指定本地分支推送到指定远程主机，并指定该远程主机为默认主机<br>2、推送模式<br>git push有两种模式，simple和matching；simple只推送当前分支，matching会推送所有对应分支；Git 2.0以前默认采用matching，现在默认使用simple；可使用git config更改：<br>git config –global push.default matching 或 git config –global push.default simple<br>还有一种可选模式，是不管是否存在远程分支，将本地分支都推送到远程主机：git push –all &lt;remote name&gt;<br>3、解决冲突<br>当远程分支版本较新时，需要先git pull，手工合并差异，再push<br>但可以使用–force强制推送：git push –force &lt;remote name&gt;，覆盖远程分支的文件，谨慎使用<br>4、推送标签<br>默认不会推送标签，使用–tags：git push &lt;remote name&gt; –tags</p>
+<h1 id="本地分支与远程分支实践"><a href="#本地分支与远程分支实践" class="headerlink" title="本地分支与远程分支实践"></a>本地分支与远程分支实践</h1><h2 id="本地分支"><a href="#本地分支" class="headerlink" title="本地分支"></a>本地分支</h2><p>1、通过git init生成本地仓库，本地是无分支的，可以新建分支，或commit文件后生成默认的master分支<br>2、通过git clone生成本地仓库，会取回所有远程分支，并默认在本地新建远程仓库的HEAD指向的分支，以远程分支的名称命名，并连接；可以使用-b或–branch参数指定远程分支</p>
+<h2 id="远程分支"><a href="#远程分支" class="headerlink" title="远程分支"></a>远程分支</h2><p>1、通过git checkout &lt;remote branch name&gt;，切换到远程分支时，会进入detached HEAD状态，以“(HEAD detached at &lt;remote branch name&gt;)”标记，工作树会显示远程分支的文件，可以修改提交，但不会造成修改，当切换到本地分支后，该分支立即消失<br>2、通过git checkout -b &lt;branch name&gt; &lt;remote branch name&gt;，则会在本地新建分支，并拷贝远程分支文件，并建立两个分支之间的连接</p>
+<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><p>指向commit的一个指针，与commit id功能一样，但名称更加容易记忆，好找<br>git push的时候默认不会推送标签，除非使用–tag参数</p>
+<h2 id="命令-6"><a href="#命令-6" class="headerlink" title="命令"></a>命令</h2><h3 id="查看-3"><a href="#查看-3" class="headerlink" title="查看"></a>查看</h3><p>查看所有标签(按名称排序)：git tag<br>查看某个标签详细信息：git show &lt;tag name&gt;</p>
+<h3 id="添加-1"><a href="#添加-1" class="headerlink" title="添加"></a>添加</h3><p>打在最新的commit上：git tag &lt;tag name&gt;<br>打在某一个commit上：git tag &lt;tag name&gt; &lt;commit id&gt;</p>
+<h3 id="删除-4"><a href="#删除-4" class="headerlink" title="删除"></a>删除</h3><p>删除标签：git tag -d &lt;tag name&gt;</p>
+<h3 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h3><p>推送标签到远程主机：git push &lt;remote name&gt; &lt;tag name&gt;<br>推送所有标签到远程主机：git push &lt;remote name&gt; –tags</p>
+<h2 id="实践-8"><a href="#实践-8" class="headerlink" title="实践"></a>实践</h2><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><p>使用-a指定标签名，-m添加有说明的标签：git tag -a &lt;tag name&gt; -m “&lt;description&gt;” &lt;commit id&gt;<br>使用-s使用GPG签名(不可伪造，可验证)的标签：git tag -s &lt;tag name&gt; -m “&lt;description&gt;” &lt;commit id&gt;</p>
+<h3 id="删除远程标签"><a href="#删除远程标签" class="headerlink" title="删除远程标签"></a>删除远程标签</h3><p>先删除本地标签，git tag -d &lt;tag name&gt;，再删除远程主机标签，git push &lt;remote name&gt; :refs/tags/&lt;tag name&gt;</p>
+<h1 id="自定义Git"><a href="#自定义Git" class="headerlink" title="自定义Git"></a>自定义Git</h1><h2 id="1、git-config"><a href="#1、git-config" class="headerlink" title="1、git config"></a>1、git config</h2><p>例如username和email，例如开启颜色：git config –global color.ui true</p>
+<h2 id="2、git-ignore"><a href="#2、git-ignore" class="headerlink" title="2、git ignore"></a>2、git ignore</h2><p>通过在仓库根目录放置 .gitignore 文件，可以配置Git忽略的不追踪的文件，如class文件、操作系统生成的文件、包含敏感信息的文件等<br>文件模板可见： <a href="https://github.com/github/gitignore" target="_blank" rel="noopener">https://github.com/github/gitignore</a><br>add被ignore的文件类型时，会提示已经ignore并失败，如果一定要上传，有两种选择：<br>一是添加-f参数强制添加：git add -f &lt;filename&gt;<br>二是删除相应规则，可以先查看对应的是哪条规则：git check-ignore -v &lt;filename&gt;</p>
+<h2 id="3、配置别名"><a href="#3、配置别名" class="headerlink" title="3、配置别名"></a>3、配置别名</h2><p>添加别名：<br>git config –global alias.&lt;别名&gt; &lt;命令&gt;，–global针对当前用户起效果，不加则只针对当前仓库<br>例如，<br>git config –global alias.st status，st表示status<br>git config –global alias.co checkout，co表示checkout<br>git config –global alias.ci commit，ci表示commit<br>git config –global alias.br branch，br表示branch<br>git config –global alias.unstage ‘reset HEAD’，unstage表示撤销暂存区<br>git config –global alias.last ‘log -1’，last显示最后一次提交信息<br>git config –global alias.lg “log –color –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit”，lg显示提交图<br>删除别名：<br>Git仓库配置文件：打开 .git/config/.gitconfig<br>Git用户配置文件：~/.gitconfig<br>在[alias]段落中配置了别名规则，修改文件内容即可</p>
+<h1 id="继续深入"><a href="#继续深入" class="headerlink" title="继续深入"></a>继续深入</h1><p>1、命令详解<br>参见Git官网： <a href="https://git-scm.com/docs" target="_blank" rel="noopener">https://git-scm.com/docs</a><br>2、Pro Git<br>官网推荐书籍，内容详实<br>豆瓣读书： <a href="https://book.douban.com/subject/26208470/" target="_blank" rel="noopener">https://book.douban.com/subject/26208470/</a><br>官网阅读： <a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">https://git-scm.com/book/en/v2</a></p>
+<h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><p>《常用 Git 命令清单》 <a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a><br>《Git 工作流程》 <a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/12/git-workflow.html</a><br>《Git 使用规范流程》 <a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/08/git-use-process.html</a><br>《Git分支管理策略》 <a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/07/git.html</a><br>《GitHub Flow》 <a href="http://scottchacon.com/2011/08/31/github-flow.html" target="_blank" rel="noopener">http://scottchacon.com/2011/08/31/github-flow.html</a><br>《Commit message 和 Change log 编写指南》 <a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html</a><br>《Github 的清点对象算法》 <a href="http://www.ruanyifeng.com/blog/2015/09/git-bitmap.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/09/git-bitmap.html</a></p>
+<p>参考：<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a><br><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/06/git_remote.html</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/工具/000137-Git入门/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Web/000139-XML vs. JSON/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-6.控制流 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-1-简介"><span class="toc-text">6.1 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-2-if语句"><span class="toc-text">6.2 if语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用if语句"><span class="toc-text">使用if语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-3-while语句"><span class="toc-text">6.3 while语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用while语句"><span class="toc-text">使用while语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-1"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-1"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-4-for循环"><span class="toc-text">6.4 for循环</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用for语句"><span class="toc-text">使用for语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-2"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-2"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-5-break语句"><span class="toc-text">6.5 break语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用break语句"><span class="toc-text">使用break语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-3"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-3"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-6-continue语句"><span class="toc-text">6.6 continue语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用coninue语句"><span class="toc-text">使用coninue语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-4"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-4"><span class="toc-text">如何工作</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000098-简明Python教程-6.控制流" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-6.控制流</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.24</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="6-1-简介"><a href="#6-1-简介" class="headerlink" title="6.1 简介"></a>6.1 简介</h1><p>通过控制流语句实现语句流的执行顺序。<br>Python中有三种控制流语句——if、for和while</p>
+<h1 id="6-2-if语句"><a href="#6-2-if语句" class="headerlink" title="6.2 if语句"></a>6.2 if语句</h1><p>if语句用来检验一个条件<br>如果为真，运行一块语句(称为if-块)<br>否则，处理另外一块语句(称为else-块)<br>else从句是可选的</p>
+<h2 id="使用if语句"><a href="#使用if语句" class="headerlink" title="使用if语句"></a>使用if语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: if.py</span></span><br><span class="line"></span><br><span class="line">number = <span class="number">23</span></span><br><span class="line">guess = int(raw_input(<span class="string">'Enter an integer : '</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> guess == number:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Congratulations, you guessed it.'</span> <span class="comment"># New block starts here</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"(but you do not win any prizes!)"</span> <span class="comment"># New block ends here</span></span><br><span class="line"><span class="keyword">elif</span> guess &lt; number:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'No, it is a little higher than that'</span> <span class="comment"># Another block</span></span><br><span class="line">    <span class="comment"># You can do whatever you want in a block ...</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'No, it is a little lower than that'</span> </span><br><span class="line">    <span class="comment"># you must have guess &gt; number to reach here</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Done'</span></span><br><span class="line"><span class="comment"># This last statement is always executed, after the if statement is executed</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ python if.py</span><br><span class="line">Enter an <span class="built_in">integer</span> : 50</span><br><span class="line">No, it is a little lower than that</span><br><span class="line">Done</span><br><span class="line">$ python if.py</span><br><span class="line">Enter an <span class="built_in">integer</span> : 22</span><br><span class="line">No, it is a little higher than that</span><br><span class="line">Done</span><br><span class="line">$ python if.py</span><br><span class="line">Enter an <span class="built_in">integer</span> : 23</span><br><span class="line">Congratulations, you guessed it.</span><br><span class="line">(but you <span class="keyword">do</span> not win any prizes!)</span><br><span class="line">Done</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>程序首先将目标数字预设为23<br>然后通过raw_input()函数获取用户猜测的数字(函数是重用的程序段，见下一章)<br>接下来将用户猜测与目标数字做比较，打印相应消息<br>* Python中没有switch语句，可以使用if..elif..else语句或字典来完成同样的工作</p>
+<h1 id="6-3-while语句"><a href="#6-3-while语句" class="headerlink" title="6.3 while语句"></a>6.3 while语句</h1><p>while语句是循环语句的一个例子<br>在一个条件为真的情况下，while语句重复执行一块语句<br>while语句有一个可选的else语句</p>
+<h2 id="使用while语句"><a href="#使用while语句" class="headerlink" title="使用while语句"></a>使用while语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: while.py</span></span><br><span class="line"></span><br><span class="line">number = <span class="number">23</span></span><br><span class="line">running = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> running:</span><br><span class="line">    guess = int(raw_input(<span class="string">'Enter an integer : '</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> guess == number:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Congratulations, you guessed it.'</span> </span><br><span class="line">        running = <span class="keyword">False</span> <span class="comment"># this causes the while loop to stop</span></span><br><span class="line">    <span class="keyword">elif</span> guess &lt; number:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'No, it is a little higher than that'</span> </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'No, it is a little lower than that'</span> </span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'The while loop is over.'</span> </span><br><span class="line">    <span class="comment"># Do anything else you want to do here</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Done'</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ python while.py</span><br><span class="line">Enter an <span class="built_in">integer</span> : 50</span><br><span class="line">No, it is a little lower than that.</span><br><span class="line">Enter an <span class="built_in">integer</span> : 22</span><br><span class="line">No, it is a little higher than that.</span><br><span class="line">Enter an <span class="built_in">integer</span> : 23</span><br><span class="line">Congratulations, you guessed it.</span><br><span class="line">The <span class="keyword">while</span> loop is over.</span><br><span class="line">Done</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-1"><a href="#如何工作-1" class="headerlink" title="如何工作"></a>如何工作</h2><p>让用户不断地猜数直到猜对为止，而不像刚才每次都需要重复执行一遍程序<br>raw_input和if语句被移到了while循环内，并在while循环开始前把running设为True<br>一直到running变为False，循环停止，执行else块<br>else实际上是多余的，可以将其中的语句放在与while同一个语句块中</p>
+<h1 id="6-4-for循环"><a href="#6-4-for循环" class="headerlink" title="6.4 for循环"></a>6.4 for循环</h1><p>for..in是另外一个循环语句<br>在一序列的对象上逐一使用队列中的每个项目(后续会学习序列)</p>
+<h2 id="使用for语句"><a href="#使用for语句" class="headerlink" title="使用for语句"></a>使用for语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: for.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">    <span class="keyword">print</span> i</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'The for loop is over'</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python for.py</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">The <span class="keyword">for</span> loop is over</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-2"><a href="#如何工作-2" class="headerlink" title="如何工作"></a>如何工作</h2><p>使用range函数生成一个数的序列，然后打印这个序列的数<br><em>range函数：<br>range从第一个参数到第二个参数为止，返回一个序列<br>如range(1,5)返回序列[1,2,3,4]<br>默认步长为1，可以用第三个参数指定<br>如range(1,5,2)返回[1,3]<br>range向上延伸到第二个参数，不包含第二个参数</em><br>for循环在序列内依次复制给i（for i in range(1,5)等价于for i in [1,2,3,4]），然后打印<br>else是可选的，总是在for循环结束后执行一次，除非遇到break语句<br>for..in循环对于任何序列都使用，可以使用任何种类的由任何对象组成的序列</p>
+<h1 id="6-5-break语句"><a href="#6-5-break语句" class="headerlink" title="6.5 break语句"></a>6.5 break语句</h1><p>break语句是用来终止循环语句的<br>如果从for或while循环中break，相应的else块将不执行</p>
+<h2 id="使用break语句"><a href="#使用break语句" class="headerlink" title="使用break语句"></a>使用break语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: break.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    s = raw_input(<span class="string">'Enter something : '</span>)</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">'quit'</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Length of the string is'</span>, len(s)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Done'</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ python break.py</span><br><span class="line">Enter something : Programming is fun</span><br><span class="line">Length of the string is 18</span><br><span class="line">Enter something : When the work is <span class="keyword">done</span></span><br><span class="line">Length of the string is 21</span><br><span class="line">Enter something : <span class="keyword">if</span> you wanna make your work also fun:</span><br><span class="line">Length of the string is 37</span><br><span class="line">Enter something :       use Python!</span><br><span class="line">Length of the string is 12</span><br><span class="line">Enter something : quit</span><br><span class="line">Done</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-3"><a href="#如何工作-3" class="headerlink" title="如何工作"></a>如何工作</h2><p>循环获取输入，并利用内建的len函数获取输入长度，并输出<br>当用户输入quit时，停止程序</p>
+<h1 id="6-6-continue语句"><a href="#6-6-continue语句" class="headerlink" title="6.6 continue语句"></a>6.6 continue语句</h1><p>continue语句告诉Python跳过当前循环块中的剩余语句，然后继续下一轮循环</p>
+<h2 id="使用coninue语句"><a href="#使用coninue语句" class="headerlink" title="使用coninue语句"></a>使用coninue语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: continue.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    s = raw_input(<span class="string">'Enter something : '</span>)</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">'quit'</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> len(s) &lt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Input is of sufficient length'</span></span><br><span class="line">    <span class="comment"># Do other kinds of processing here...</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python continue.py</span><br><span class="line">Enter something : a</span><br><span class="line">Enter something : 12</span><br><span class="line">Enter something : abc</span><br><span class="line">Input is of sufficient length</span><br><span class="line">Enter something : quit</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-4"><a href="#如何工作-4" class="headerlink" title="如何工作"></a>如何工作</h2><p>用户输入字符，仅当它们长度大于等于3时才处理，否则直接continue，忽略块中的剩余语句</p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000097-简明Python教程-5.运算符与表达式/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000099-简明Python教程-7.函数/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

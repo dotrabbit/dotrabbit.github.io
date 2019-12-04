@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Oracle问题排查 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="数据库,Oracle,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000121-Oracle问题排查" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Oracle问题排查</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.10.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>查询表空间信息：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">UPPER</span>(F.TABLESPACE_NAME) <span class="string">"表空间名 "</span>,</span><br><span class="line">       D.MAX_GROOTTE_MB <span class="string">"表空间最大值 (M)"</span>,</span><br><span class="line">       D.TOT_GROOTTE_MB <span class="string">"当前已分配表空间 (M)"</span>,</span><br><span class="line">       D.TOT_GROOTTE_MB - F.TOTAL_BYTES <span class="string">"当前已使用表空间 (M)"</span>,</span><br><span class="line">       TO_CHAR(<span class="keyword">ROUND</span>((D.TOT_GROOTTE_MB - F.TOTAL_BYTES) / D.MAX_GROOTTE_MB * <span class="number">100</span>,</span><br><span class="line">                     <span class="number">2</span>),</span><br><span class="line">               <span class="string">'990.99'</span>) <span class="string">"总表空间使用比"</span>,</span><br><span class="line">       TO_CHAR(<span class="keyword">ROUND</span>((D.TOT_GROOTTE_MB - F.TOTAL_BYTES) / D.TOT_GROOTTE_MB * <span class="number">100</span>,</span><br><span class="line">                     <span class="number">2</span>),</span><br><span class="line">               <span class="string">'990.99'</span>) <span class="string">"当前已分配表空间使用比 "</span>,</span><br><span class="line">       F.TOTAL_BYTES<span class="string">"当前已分配表空间空闲 (M) "</span>,</span><br><span class="line">       F.MAX_BYTES <span class="string">"最大块 (M) "</span></span><br><span class="line">  <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> TABLESPACE_NAME,</span><br><span class="line">               <span class="keyword">ROUND</span>(<span class="keyword">SUM</span>(<span class="keyword">BYTES</span>) / (<span class="number">1024</span> * <span class="number">1024</span>), <span class="number">2</span>) TOTAL_BYTES,</span><br><span class="line">               <span class="keyword">ROUND</span>(<span class="keyword">MAX</span>(<span class="keyword">BYTES</span>) / (<span class="number">1024</span> * <span class="number">1024</span>), <span class="number">2</span>) MAX_BYTES</span><br><span class="line">          <span class="keyword">FROM</span> SYS.DBA_FREE_SPACE</span><br><span class="line">         <span class="keyword">GROUP</span> <span class="keyword">BY</span> TABLESPACE_NAME) F,</span><br><span class="line">       (<span class="keyword">SELECT</span> DD.TABLESPACE_NAME,</span><br><span class="line">               <span class="keyword">ROUND</span>(<span class="keyword">SUM</span>(DD.BYTES) / (<span class="number">1024</span> * <span class="number">1024</span>), <span class="number">2</span>) TOT_GROOTTE_MB,</span><br><span class="line">               <span class="keyword">ROUND</span>(<span class="keyword">SUM</span>(DD.MAXBYTES) / (<span class="number">1024</span> * <span class="number">1024</span>), <span class="number">2</span>) MAX_GROOTTE_MB</span><br><span class="line">          <span class="keyword">FROM</span> SYS.DBA_DATA_FILES DD</span><br><span class="line">         <span class="keyword">GROUP</span> <span class="keyword">BY</span> DD.TABLESPACE_NAME) D</span><br><span class="line"><span class="keyword">WHERE</span> D.TABLESPACE_NAME = F.TABLESPACE_NAME</span><br><span class="line">   <span class="keyword">and</span> D.TABLESPACE_NAME <span class="keyword">like</span> <span class="string">'AMB%'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">5</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure></p>
+<p>查询是否有失败Job：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> user_jobs <span class="keyword">where</span> broken=<span class="string">'Y'</span> <span class="keyword">or</span> failures&gt;<span class="number">0</span> <span class="keyword">or</span> next_date&lt;trunc(<span class="keyword">SYSDATE</span>);</span><br></pre></td></tr></table></figure></p>
+<p>查询是否存在重复Job：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> t.JOB, t.WHAT, t.INTERVAL <span class="keyword">from</span> user_jobs t <span class="keyword">order</span> <span class="keyword">by</span> t.WHAT</span><br></pre></td></tr></table></figure></p>
+<p>两个timestamp时间相差5分钟以内：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> t <span class="keyword">where</span> <span class="keyword">extract</span>(<span class="keyword">minute</span> <span class="keyword">from</span> (t.time1 - t.time2) &lt;= <span class="number">5</span></span><br></pre></td></tr></table></figure></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/数据库/000120-数据库删除——delete、drop、truncate/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/数据库/000122-临时表空间相关问题/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

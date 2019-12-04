@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>数据库事务隔离级别 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="数据库,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#事务的特性"><span class="toc-text">事务的特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#隔离级别的作用"><span class="toc-text">隔离级别的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展"><span class="toc-text">拓展</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000119-数据库事务隔离级别" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">数据库事务隔离级别</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h1><p>事务具备四大特性，ACID：<br>1、Atomicity，原子性，事务中的操作要么全部成功，要么全部回滚失败<br>2、Consistency，一致性，事务执行前后，系统必须从一个一致性的状态转换到另一个，保证数据的完整性和业务状态的一致性，例如转账前后总余额不变<br>3、Isolation，隔离性，隔离并行事务，事务的运行不会被另一个事务干扰<br>4、Durability，持久性，事务一旦提交，对数据库所做的改变会被永久保存，不会被回滚，不会因断电等故障丢失</p>
+<h1 id="隔离级别的作用"><a href="#隔离级别的作用" class="headerlink" title="隔离级别的作用"></a>隔离级别的作用</h1><p>保证数据库并发操作时，数据的正确性，保证隔离性</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>当对数据库进行并发操作时，有可能发生以下几种问题：<br>1、丢失更新<br>两个事务同时更新一行数据，一个事务的操作覆盖了另一个的<br>2、脏读<br>一个事务读取到了另一个事务未提交的数据操作结果。这是相当危险的，因为很可能所有的操作都被回滚。<br>3、不可重复读<br>对于数据库中的某个数据，一个事务范围内，多次查询却返回了不同的数据值<br>这是由于在查询间隔，被另一个事务修改并提交了<br>脏读是读取了另一个事务未提交的脏数据，而不可重复读是读取了另一个事务提交前后的数据<br>4、幻读/虚读<br>对于数据库中的某批数据，事务的多次操作得到了不同结果，像出现了幻觉一样<br>原因为另一个事务做了操作：<br>增，多了之前未出现的数据记录<br>删，少了数据记录<br>改，多了不该有的记录，或少了该有的记录</p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>标准SQL规范中，定义了4个事务隔离级别，不同的隔离级别对事务的处理不同<br>1、未授权读取/读未提交，Read Uncommitted<br>定义：如果一个事务已经开始写数据，则另外一个事务则不允许同时进行写操作，但允许其他事务读此行数据<br>隔离：允许脏读取，但不允许更新丢失<br>实现：该隔离级别可以通过“排他写锁”实现</p>
+<p>2、授权读取/读提交，Read Committed<br>定义：读取数据的事务允许其他事务继续访问该行数据，但是未提交的写事务将会禁止其他事务访问该行<br>隔离：允许不可重复读取，但不允许脏读取。<br>实现：这可以通过“瞬间共享读锁”和“排他写锁”实现</p>
+<p>3、可重复读取，Repeatable Read<br>定义：读取数据的事务将会禁止写事务（但允许读事务），写事务则禁止任何其他事务<br>隔离：禁止不可重复读取和脏读取，但是有时可能出现幻读数据<br>实现：这可以通过“共享读锁”和“排他写锁”实现</p>
+<p>4、序列化，Serializable<br>定义：提供严格的事务隔离。它要求事务序列化执行，事务只能一个接着一个地执行，不能并发执行<br>实现：仅仅通过“行级锁”是无法实现事务序列化的，必须通过其他机制保证新插入的数据不会被刚执行查询操作的事务访问到</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>丢失更新</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未提交读</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>已提交读</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>可串行读</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p>(Y表示可能发生，N表示不会发生)</p>
+<p>隔离级别越高，越能保证数据的完整性和一致性，但是对并发性能的影响也越大。<br>对于多数应用程序，可以优先考虑把数据库系统的隔离级别设为Read Committed。它能够避免脏读取，而且具有较好的并发性能。尽管它会导致不可重复读、幻读和第二类丢失更新这些并发问题，在可能出现这类问题的个别场合，可以由应用程序采用悲观锁或乐观锁来控制。</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>Spring的五个事务隔离级别，和七个事务传播行为<br><a href="http://blog.csdn.net/it_man/article/details/5074371" target="_blank" rel="noopener">http://blog.csdn.net/it_man/article/details/5074371</a><br><a href="http://www.cnblogs.com/shitianzeng/articles/2319090.html" target="_blank" rel="noopener">http://www.cnblogs.com/shitianzeng/articles/2319090.html</a><br><a href="http://www.2cto.com/kf/201312/264064.html" target="_blank" rel="noopener">http://www.2cto.com/kf/201312/264064.html</a><br><a href="http://blog.csdn.net/it_wangxiangpan/article/details/24180085" target="_blank" rel="noopener">http://blog.csdn.net/it_wangxiangpan/article/details/24180085</a><br><a href="http://blog.csdn.net/edward0830ly/article/details/7569954" target="_blank" rel="noopener">http://blog.csdn.net/edward0830ly/article/details/7569954</a></p>
+<p>参考：<br><a href="http://www.cnblogs.com/fjdingsd/p/5273008.html" target="_blank" rel="noopener">http://www.cnblogs.com/fjdingsd/p/5273008.html</a><br><a href="http://baike.baidu.com/item/%E4%BA%8B%E5%8A%A1/5945882" target="_blank" rel="noopener">http://baike.baidu.com/item/%E4%BA%8B%E5%8A%A1/5945882</a><br><a href="http://baike.baidu.com/item/%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB" target="_blank" rel="noopener">http://baike.baidu.com/item/%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB</a><br><a href="http://blog.csdn.net/shuaihj/article/details/14163713" target="_blank" rel="noopener">http://blog.csdn.net/shuaihj/article/details/14163713</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/工具/000118-加密算法/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/数据库/000120-数据库删除——delete、drop、truncate/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

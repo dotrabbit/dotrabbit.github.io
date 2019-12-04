@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>关于REST | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Web,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#特点"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REST与SOAP"><span class="toc-text">REST与SOAP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展阅读"><span class="toc-text">拓展阅读</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000140-关于REST" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">关于REST</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>REST，全称REpsentation State Transfer，表现状态转换</p>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>1、由Roy Thomas Fielding在他2000年的博士论文中提出，他是HTTP协议（1.0版和1.1版）的主要设计者、Apache服务器软件的作者之一、Apache基金会的第一任主席<br>2、以资源为中心<br>资源(Resources)，即网络上的一个实体，或者说是网络上的一个具体信息<br>如文本、图片、歌曲、服务、应用程序对象、数据库记录、算法等<br>每个资源都使用URI(Universal Resource Identifier)得到一个唯一的地址<br>3、显式地使用 HTTP 方法<br>REST要求开发人员显式地使用HTTP方法，并且使用方式与协议定义一致<br>这个基本的REST设计原则建立了创建、读取、更新和删除(create、read、update、delete，CRUD)操作，与HTTP方法之间的一对一映射：<br>使用POST方法，在服务器上创建资源<br>使用GET方法，检索某个资源<br>使用PUT方法，更改资源状态或对其进行更新<br>使用DELETE方法，删除某个资源<br>4、是风格，而不是标准<br>在我看来，风格与标准的最大区别是是否可以准确判定。<br>对于标准，应该是非黑即白的。例如，对于web services标准，一个XML是不是符合SOAP协议的，很简单就可以判定，是或者不是。<br>而对于风格，只是一个高层次的描述，它的边界是模糊的，很难界定一个实现是否是某种风格，但可以说它是符合某种风格的，所以对于REST风格的应用，使用RESTful这个词汇，ful后缀一般用来放在边界较为模糊的形容词上，例如Beautiful。<br>5、无状态的<br>从客户端到服务器的每个请求都必须包含理解请求所必需的信息。如果服务器在请求之间的任何时间点重启，客户端不会得到通知。此外，无状态请求可以由任何可用服务器回答，这十分适合云计算之类的环境。客户端可以缓存数据以改进性能。<br>REST Web 服务需要扩展以满足日益提高的性能要求。 具有负载平衡和故障转移功能、代理和网关的服务器集群通常以形成服务拓扑的方式进行组织，从而允许根据需要将请求从一个服务器路由到另一个服务器，以减少 Web 服务调用的总体响应时间。 要使用中间服务器扩大规模，REST Web 服务需要发送完整、独立的请求；也就是说，发送的请求包括所有需要满足的数据，以便中间服务器中的组件能够进行转发、路由和负载平衡，而不需要在请求之间在本地保存任何状态。<br>完整、独立的请求不要求服务器在处理请求时检索任何类型的应用程序上下文或状态。 REST Web 服务应用程序（或客户端）在 HTTP Header 和请求正文中包括服务器端组件生成响应所需要的所有参数、上下文和数据。 这种意义上的无状态可以改进 Web 服务性能，并简化服务器端组件的设计和实现，因为服务器上没有状态，从而消除了与外部应用程序同步会话数据的需要。<br>6、无法应用于事务性<br>对于事务型的服务，一个简单的例子就是银行事务，在那里用户可以把钱从一个账户转移到另一个账户上。用户不想直接操作资源（钱、银行账户等等），他们只想告诉银行他们想要达到的目的，并且让银行根据他们的利益对资源进行处理。<br>所以从这一条，我们应该明白，选择基于REST或SOAP RPC风格的Web 服务，我们应该首先考虑这个服务是针对资源的还是针对活动的。</p>
+<ul>
+<li>James Snell，面向资源与面向活动的 Web 服务</li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>在Web API中，存在很多将HTTP方法用于非预期用途的设计，很不优雅，且容易引起误调用(如使用GET获取内容而不小心向服务器添加了数据)。<br>通过实例，可以更加直接地理解REST解决的问题和优势：<br>糟糕的设计：<br>增加用户：GET /adduser?name=Robert HTTP/1.1<br>更新用户：GET /updateuser?name=Robert&amp;newname=Bob HTTP/1.1<br>REST：<br>增加用户：<br>POST /users HTTP/1.1<br>Host: myserver<br>Content-Type: application/xml<br>&lt;?xml version=”1.0”?&gt;</p>
+<p><user><br>  <name>Robert</name><br></user><br>更新用户：<br>PUT /users/Robert HTTP/1.1<br>Host: myserver<br>Content-Type: application/xml<br>&lt;?xml version=”1.0”?&gt;</p>
+<p><user><br>  <name>Bob</name><br></user><br>查询用户：<br>GET /users/Robert HTTP/1.1<br>Host: myserver<br>Accept: application/xml</p>
+<h1 id="REST与SOAP"><a href="#REST与SOAP" class="headerlink" title="REST与SOAP"></a>REST与SOAP</h1><p>随着RESTful架构高效简洁易用的特性越来越深入人心，Web Services渐渐也引入了REST风格的写法，REST与SOAP相比：<br>1、SOAP面向XML，REST面向HTTP<br>使用SOAP的Web Services实现将HTTP简化为POST方式，行为和参数都封装在SOAP里<br>而REST更加面向HTTP的操作映射，同时支持JSON等多种格式<br>另一方面，REST的提出者是HTTP的主要设计者，这一点就更容易理解了<br>2、SOAP面向操作，REST面向资源<br>SOAP协议描述了提供服务的方法和参数，用来描述用什么数据来做什么样的行为，是面向操作的，有操作，才有资源<br>RESTful的设计中，url表达的是资源，更加关注资源的定位，以资源为中心，其次才是HTTP头中的操作，有资源，才有操作<br>在使用SOAP协议的Web Services中，HTTP请求被简化为全部使用POST请求，而操作封装在SOAP里；使用REST则遵循HTTP的规范，在HTTP头中定义操作<br>3、SOAP更容易扩展，REST无法胜任一些复杂服务<br>对于一些复杂的服务接口来说，按照REST的风格来设计会有些牵强<br>观察各大网站的接口，很多网站还要传入function的名称作为参数，明显已经违背了REST本身的设计思路<br>4、SOAP更加成熟，REST更加高效<br>SOAP发展至今，厂商的支持已经达到了较为成熟的情况，不同平台语言之间通过SOAP来交互的Web Services都能够较好地互通<br>但SOAP由于各种需求不断扩充其本身协议的内容，导致在SOAP处理方面的性能有所下降。同时在易用性方面以及学习成本上也有所增加<br>REST高效简洁，且除了XML还支持JSON、RSS、ATOM等，更加易用<br>5、安全性<br>SOAP使用XML-Security和XML-Signature两个规范，组成WS-Security实现安全控制，且得到了各大厂商和平台的很好支持<br>REST没有任何安全方面的说明，现在开放REST风格API的网站主要分成两种：<br>a. 封装自定义的安全信息在消息中，这和SOAP没有什么区别<br>b. 硬件SSL，只能够保证点到点的安全，如果是需要多点传输的话SSL就无能为力了</p>
+<h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><p>RESTful API设计指南： <a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a><br>各大网站REST风格API设计： <a href="http://blog.csdn.net/cenwenchu79/article/details/2112275" target="_blank" rel="noopener">http://blog.csdn.net/cenwenchu79/article/details/2112275</a></p>
+<p>参考：<br><a href="http://baike.baidu.com/link?url=lPP8IHeih-P3pBDlqaLm3BMRHSPdsCMIJeuuRRRLRLUsPFbC8ygng7kCp5-wGA49EUIgAfMFWfJjws5S5HoG3K" target="_blank" rel="noopener">http://baike.baidu.com/link?url=lPP8IHeih-P3pBDlqaLm3BMRHSPdsCMIJeuuRRRLRLUsPFbC8ygng7kCp5-wGA49EUIgAfMFWfJjws5S5HoG3K</a><br><a href="http://blog.csdn.net/cenwenchu79/article/details/2112275" target="_blank" rel="noopener">http://blog.csdn.net/cenwenchu79/article/details/2112275</a><br><a href="https://www.ibm.com/developerworks/cn/webservices/ws-restful/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/webservices/ws-restful/</a><br><a href="http://zhangjunhd.blog.51cto.com/113473/47283/" target="_blank" rel="noopener">http://zhangjunhd.blog.51cto.com/113473/47283/</a><br><a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/09/restful</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Web/000139-XML vs. JSON/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Web/000141-HTTP代码/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

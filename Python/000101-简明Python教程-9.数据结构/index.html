@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-9.数据结构 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#9-1-简介"><span class="toc-text">9.1 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-2-列表"><span class="toc-text">9.2 列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象与类的快速入门"><span class="toc-text">对象与类的快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用列表"><span class="toc-text">使用列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-3-元组"><span class="toc-text">9.3 元组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用元组"><span class="toc-text">使用元组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-1"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-1"><span class="toc-text">如何工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元组与打印语句"><span class="toc-text">元组与打印语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-2"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-2"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-4-字典"><span class="toc-text">9.4 字典</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用字典"><span class="toc-text">使用字典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-3"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-3"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-5-序列"><span class="toc-text">9.5 序列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用序列"><span class="toc-text">使用序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-4"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-4"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-6-引用"><span class="toc-text">9.6 引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象与引用"><span class="toc-text">对象与引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-5"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-5"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-7-更多字符串的内容"><span class="toc-text">9.7 更多字符串的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串的方法"><span class="toc-text">字符串的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-6"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-6"><span class="toc-text">如何工作</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000101-简明Python教程-9.数据结构" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-9.数据结构</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="9-1-简介"><a href="#9-1-简介" class="headerlink" title="9.1 简介"></a>9.1 简介</h1><p>数据结构基本上就是——它们可以处理一些<em> 数据 </em>的<em> 结构 </em><br>它们是用来存储一组相关数据的<br>Python中有三种內建的数据结构——列表、元组合字典</p>
+<h1 id="9-2-列表"><a href="#9-2-列表" class="headerlink" title="9.2 列表"></a>9.2 列表</h1><p>list是处理一组有序项目的数据结构，即可以在一个列表中存储一个<em> 序列 </em>的项目<br>在列表中，在每个项目之间用逗号分割，并且将项目包括在方括号中，这样Python就知道你在指明一个列表<br>创建列表之后，可以添加、删除或是搜索列表中的项目<br>由于可以增加或删除项目，所以说列表是可变的数据类型，即这种类型是可以被改变的</p>
+<h2 id="对象与类的快速入门"><a href="#对象与类的快速入门" class="headerlink" title="对象与类的快速入门"></a>对象与类的快速入门</h2><p>当使用变量i并给它赋值的时候，可以认为创建了一个<strong> 类 </strong>(类型)int的<strong> 对象 </strong>(实例)I<br>可通过help(int)查看详细信息<br>类有<strong> 方法 </strong>，即仅仅为类而定义的函数<br>只有在有一个该类的对象的时候，才可以使用这些功能<br>使用点号来使用对象的方法，如mylist.append(‘an item’)<br>类有<strong> 域 </strong>，即仅仅为类而定义的变量<br>只有在有一个类的对象的时候，才可以使用这些变量/名称<br>使用点号来使用域，如mylist.fields</p>
+<h2 id="使用列表"><a href="#使用列表" class="headerlink" title="使用列表"></a>使用列表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: using_list.py</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This is my shopping list</span></span><br><span class="line">shoplist = [<span class="string">'apple'</span>, <span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'I have'</span>, len(shoplist),<span class="string">'items to purchase.'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'These items are:'</span>, <span class="comment"># Notice the comma at end of the line</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> shoplist:</span><br><span class="line">    <span class="keyword">print</span> item,</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'\nI also have to buy rice.'</span></span><br><span class="line">shoplist.append(<span class="string">'rice'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'My shopping list is now'</span>, shoplist</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'I will sort my list now'</span></span><br><span class="line">shoplist.sort()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Sorted shopping list is'</span>, shoplist</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'The first item I will buy is'</span>, shoplist[<span class="number">0</span>]</span><br><span class="line">olditem = shoplist[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">del</span> shoplist[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'I bought the'</span>, olditem</span><br><span class="line"><span class="keyword">print</span> <span class="string">'My shopping list is now'</span>, shoplist</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ python using_list.py</span><br><span class="line">I have 4 items to purchase.</span><br><span class="line">These items are: apple mango carrot banana</span><br><span class="line">I also have to buy rice.</span><br><span class="line">My shopping list is now [<span class="string">'apple'</span>, <span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>, <span class="string">'rice'</span>]</span><br><span class="line">I will sort my list now</span><br><span class="line">Sorted shopping list is [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'carrot'</span>, <span class="string">'mango'</span>, <span class="string">'rice'</span>]</span><br><span class="line">The first item I will buy is apple</span><br><span class="line">I bought the apple</span><br><span class="line">My shopping list is now [<span class="string">'banana'</span>, <span class="string">'carrot'</span>, <span class="string">'mango'</span>, <span class="string">'rice'</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>变量shoplist保存物品名字的字符串(实际上，可以在列表中添加<em> 任何种类的对象 </em>，包括数字甚至其他列表)<br>使用for..in循环列表中各项目，列表也是一个序列，序列在后面讨论<br>print语句的结尾使用了一个逗号来消除每个print语句自动打印的换行符，虽然难看，但简单有效<br>使用append方法，在列表中添加项目<br>通过打印列表的内容，来检验项目的添加，只需简单地把列表传递给print语句，就可以得到一个整洁的输出<br>使用列表的sort方法对列表排序<br>列表的排序方法影响列表本身，而不是返回一个新列表，这与字符串不同，所以说列表是<em> 可变的 </em>，字符串是<em> 不可变 </em>的<br>del语句从列表中删除我们指定的项目，del shoplist[0]删除第一个元素(Python从0开始计数)<br>可以通过help(list)获得列表对象定义的所有方法等信息</p>
+<h1 id="9-3-元组"><a href="#9-3-元组" class="headerlink" title="9.3 元组"></a>9.3 元组</h1><p>元组和列表十分类似，但元组是<em> 不可变的 </em>(字符串也是)，即不可修改元组<br>元组通过 圆括号，和其中用逗号分割的项目 定义<br>通常用在需要安全地使用一组值的时候，即被使用的元组的值不会改变</p>
+<h2 id="使用元组"><a href="#使用元组" class="headerlink" title="使用元组"></a>使用元组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: using_tuple.py</span></span><br><span class="line"></span><br><span class="line">zoo = (<span class="string">'wolf'</span>, <span class="string">'elephant'</span>, <span class="string">'penguin'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Number of animals in the zoo is'</span>, len(zoo)</span><br><span class="line"></span><br><span class="line">new_zoo = (<span class="string">'monkey'</span>, <span class="string">'dolphin'</span>, zoo)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Number of animals in the new zoo is'</span>, len(new_zoo)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'All animals in new zoo are'</span>, new_zoo</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Animals brought from old zoo are'</span>, new_zoo[<span class="number">2</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Last animal brought from old zoo is'</span>, new_zoo[<span class="number">2</span>][<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python using_tuple.py</span><br><span class="line">Number of animals <span class="keyword">in</span> the zoo is 3</span><br><span class="line">Number of animals <span class="keyword">in</span> the new zoo is 3</span><br><span class="line">All animals <span class="keyword">in</span> new zoo are (<span class="string">'monkey'</span>, <span class="string">'dolphin'</span>, (<span class="string">'wolf'</span>, <span class="string">'elephant'</span>, <span class="string">'penguin'</span>))</span><br><span class="line">Animals brought from old zoo are (<span class="string">'wolf'</span>, <span class="string">'elephant'</span>, <span class="string">'penguin'</span>)</span><br><span class="line">Last animal brought from old zoo is penguin</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-1"><a href="#如何工作-1" class="headerlink" title="如何工作"></a>如何工作</h2><p>变量zoo是一个元组，可以使用len函数来获取元组的长度，表明元组也是一个序列(见9.5)<br>可以通过 方括号 来指明位置，来访问元组中的项目，就像列表一样，这称为索引运算符<br>使用new_zoo[2]来访问new_zoo中的第三个项目，new_zoo[2][2]来访问new_zoo元组的第三个项目的第三个项目<br>含有0个元素的元组，有一对空的圆括号组成，如myempty=()<br>含有1个元素的元组，在第一个/唯一一个项目后跟一个逗号，如singleton=(2, )，以区分于表达式中一个带圆括号的对象</p>
+<h2 id="元组与打印语句"><a href="#元组与打印语句" class="headerlink" title="元组与打印语句"></a>元组与打印语句</h2><p>元组最通常的用法是在打印语句中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: print_tuple.py</span></span><br><span class="line"></span><br><span class="line">age = <span class="number">22</span></span><br><span class="line">name = <span class="string">'Swaroop'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'%s is %d years old'</span> % (name, age)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Why is %s playing with that python?'</span> % name</span><br></pre></td></tr></table></figure></p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python print_tuple.py</span><br><span class="line">Swaroop is 22 years old</span><br><span class="line">Why is Swaroop playing with that python?</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-2"><a href="#如何工作-2" class="headerlink" title="如何工作"></a>如何工作</h2><p>print语句可以使用%符号定制的字符串，%s表示字符串，%d表示整数，元组必须按照相同顺序来对应这些定制<br>第一个print中，%s对应变量name，元组的第一个项目；%d对应元组的第二个项目age<br>Python会把元组中的每个项目，转换成字符串，并替换定制位置。%s被替换为变量name的值，以此类推<br>大多数时候，可以只使用%s定制，Python同样可以处理数。但对应的定制可以多一层检验<br>第二个print中，定制的%后跟着单个项目，没有圆括号，这只在定制项只有一个的时候有效</p>
+<h1 id="9-4-字典"><a href="#9-4-字典" class="headerlink" title="9.4 字典"></a>9.4 字典</h1><p>字典类似于地址簿，把<strong> 键 </strong>(名字)和<strong> 值 </strong>(详细情况)联系在一起<br>注意：<br>键必须是唯一的<br>键必须是不可变对象(如字符串)，值可以是不可变的或可变的。一般应该只使用简单的对象作为键<br>键值对在字典中标记为：d = {key1 : value1, key2 : value2}，键值对用冒号分割，各个对用逗号分割，包含在花括号中<br>字典中的键值对是没有顺序的。如果想要特定的顺序，应在使用前对它们排序<br>字典是dict类的实例/对象</p>
+<h2 id="使用字典"><a href="#使用字典" class="headerlink" title="使用字典"></a>使用字典</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: using_dict.py</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 'ab' is short for 'a'ddress'b'ook</span></span><br><span class="line"></span><br><span class="line">ab = &#123;       <span class="string">'Swaroop'</span>   : <span class="string">'swaroopch@byteofpython.info'</span>,</span><br><span class="line">             <span class="string">'Larry'</span>     : <span class="string">'larry@wall.org'</span>,</span><br><span class="line">             <span class="string">'Matsumoto'</span> : <span class="string">'matz@ruby-lang.org'</span>,</span><br><span class="line">             <span class="string">'Spammer'</span>   : <span class="string">'spammer@hotmail.com'</span></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Swaroop's address is %s"</span> % ab[<span class="string">'Swaroop'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Adding a key/value pair</span></span><br><span class="line">ab[<span class="string">'Guido'</span>] = <span class="string">'guido@python.org'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deleting a key/value pair</span></span><br><span class="line"><span class="keyword">del</span> ab[<span class="string">'Spammer'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'\nThere are %d contacts in the address-book\n'</span> % len(ab)</span><br><span class="line"><span class="keyword">for</span> name, address <span class="keyword">in</span> ab.items():</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Contact %s at %s'</span> % (name, address)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">'Guido'</span> <span class="keyword">in</span> ab: <span class="comment"># OR ab.has_key('Guido')</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"\nGuido's address is %s"</span> % ab[<span class="string">'Guido'</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ python using_dict.py</span><br><span class="line">Swaroop<span class="string">'s address is swaroopch@byteofpython.info</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">There are 4 contacts in the address-book</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Contact Swaroop at swaroopch@byteofpython.info</span></span><br><span class="line"><span class="string">Contact Matsumoto at matz@ruby-lang.org</span></span><br><span class="line"><span class="string">Contact Larry at larry@wall.org</span></span><br><span class="line"><span class="string">Contact Guido at guido@python.org</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Guido'</span>s address is guido@python.org</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-3"><a href="#如何工作-3" class="headerlink" title="如何工作"></a>如何工作</h2><p>使用字典的标记创建了字典ab，使用索引操作符指定键来使用键值对<br>使用索引操作符指定一个键并赋值，增加一个新的键值对，如Guido<br>使用del语句来删除键值对，使用索引操作符指明要删除的键，无需知道值<br>字典的items方法返回一个元组的列表，每个元组都包含一对项目——键与对应的值。抓取对，并分别赋给for..in循环中的变量name和address，然后在for块中打印<br>使用in操作符来检验一个键值对是否存在，或使用dict类的has_key方法(使用help(dict)来查看)</p>
+<h1 id="9-5-序列"><a href="#9-5-序列" class="headerlink" title="9.5 序列"></a>9.5 序列</h1><p>列表、元组和字符串都是序列<br>序列的两个主要特点是<strong> 索引 </strong>操作符和<strong> 切片 </strong>操作符<br>索引操作符让我们可以从序列中抓取一个特定项目<br>切片操作符让我们可以获取序列的一个切片</p>
+<h2 id="使用序列"><a href="#使用序列" class="headerlink" title="使用序列"></a>使用序列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: seq.py</span></span><br><span class="line"></span><br><span class="line">shoplist = [<span class="string">'apple'</span>, <span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Indexing or 'Subscription' operation</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item 0 is'</span>, shoplist[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item 1 is'</span>, shoplist[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item 2 is'</span>, shoplist[<span class="number">2</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item 3 is'</span>, shoplist[<span class="number">3</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item -1 is'</span>, shoplist[<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item -2 is'</span>, shoplist[<span class="number">-2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Slicing on a list</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item 1 to 3 is'</span>, shoplist[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item 2 to end is'</span>, shoplist[<span class="number">2</span>:]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item 1 to -1 is'</span>, shoplist[<span class="number">1</span>:<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Item start to end is'</span>, shoplist[:]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Slicing on a string</span></span><br><span class="line">name = <span class="string">'swaroop'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'characters 1 to 3 is'</span>, name[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'characters 2 to end is'</span>, name[<span class="number">2</span>:]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'characters 1 to -1 is'</span>, name[<span class="number">1</span>:<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'characters start to end is'</span>, name[:]</span><br></pre></td></tr></table></figure>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ python seq.py</span><br><span class="line">Item 0 is apple</span><br><span class="line">Item 1 is mango</span><br><span class="line">Item 2 is carrot</span><br><span class="line">Item 3 is banana</span><br><span class="line">Item -1 is banana</span><br><span class="line">Item -2 is carrot</span><br><span class="line">Item 1 to 3 is [<span class="string">'mango'</span>, <span class="string">'carrot'</span>]</span><br><span class="line">Item 2 to end is [<span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line">Item 1 to -1 is [<span class="string">'mango'</span>, <span class="string">'carrot'</span>]</span><br><span class="line">Item start to end is [<span class="string">'apple'</span>, <span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line">characters 1 to 3 is wa</span><br><span class="line">characters 2 to end is aroop</span><br><span class="line">characters 1 to -1 is waroo</span><br><span class="line">characters start to end is swaroop</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-4"><a href="#如何工作-4" class="headerlink" title="如何工作"></a>如何工作</h2><p>通过索引来获取序列中的单个项目，也被称作下标操作，使用方括号中的数来制定序列对应位置的项目<br>Python从0开始计数，shoplist[0]抓取第一个元素，shoplist[3]抓取第四个元素<br>索引可以是负数，位置从序列尾开始计算。如shoplist[-1]表示序列最后一个元素，shoplist[-2]抓取序列倒数第二个元素<br>切片操作符：<br>1、是序列名后跟一个方括号，方括号中有一对可选的数字，并用冒号分割。这与索引操作符十分相似，需要注意的是，数是可选的，冒号是必须的<br>2、第一个数(冒号前)表示切片开始位置，第二个数(冒号后)表示切片结束位置。如果不指定第一个数，则从序列首开始，如果不指定第二个数，则停止在序列尾。注意，返回的序列从<em> 开始位置 </em>开始，在<em> 结束位置之前 </em>结束，即，开始位置包含在序列切片中，而结束位置被排斥在切片外<br>例如，shoplist[1:3]返回位置1开始，包括位置2，停止在位置3的一个序列切片。因此返回一个含有两个项目的切片<br>shoplist[:]返回整个序列的拷贝<br>可以用负数做切片，负数从负数尾开始计算位置。如，shoplist[:-1]返回除了最后一个项目外的序列切片<br>序列的神奇之处在于，可以用相同的方法访问元组、列表和字符串</p>
+<h1 id="9-6-引用"><a href="#9-6-引用" class="headerlink" title="9.6 引用"></a>9.6 引用</h1><p>当创建一个对象，并给它赋一个变量的时候，这个变量仅仅<em> 引用 </em>那个对象，而不是对象本身。即，变量名指向计算机中存储的那个对象的内存。<br>这被称作名称到对象的<strong> 绑定 </strong><br>一般不需担心，但有些细微的效果需要注意。</p>
+<h2 id="对象与引用"><a href="#对象与引用" class="headerlink" title="对象与引用"></a>对象与引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: reference.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Simple Assignment'</span></span><br><span class="line">shoplist = [<span class="string">'apple'</span>, <span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line">mylist = shoplist <span class="comment"># mylist is just another name pointing to the same object!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> shoplist[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'shoplist is'</span>, shoplist</span><br><span class="line"><span class="keyword">print</span> <span class="string">'mylist is'</span>, mylist</span><br><span class="line"><span class="comment"># notice that both shoplist and mylist both print the same list without</span></span><br><span class="line"><span class="comment"># the 'apple' confirming that they point to the same object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Copy by making a full slice'</span></span><br><span class="line">mylist = shoplist[:] <span class="comment"># make a copy by doing a full slice</span></span><br><span class="line"><span class="keyword">del</span> mylist[<span class="number">0</span>] <span class="comment"># remove first item</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'shoplist is'</span>, shoplist</span><br><span class="line"><span class="keyword">print</span> <span class="string">'mylist is'</span>, mylist</span><br><span class="line"><span class="comment"># notice that now the two lists are different</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ python reference.py</span><br><span class="line">Simple Assignment</span><br><span class="line">shoplist is [<span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line">mylist is [<span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line">Copy by making a full slice</span><br><span class="line">shoplist is [<span class="string">'mango'</span>, <span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br><span class="line">mylist is [<span class="string">'carrot'</span>, <span class="string">'banana'</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-5"><a href="#如何工作-5" class="headerlink" title="如何工作"></a>如何工作</h2><p>大多数解释已经在程序注释中了<br>需要记住的是，如果想复制一个列表，或者类似的序列或者其他复杂的对象(不是整数那样的<em> 简单对象 </em>)，则需要使用切片操作符来取得拷贝<br>如果只使用变量赋值，则两个变量都<em> 引用 </em>另一个对象</p>
+<h1 id="9-7-更多字符串的内容"><a href="#9-7-更多字符串的内容" class="headerlink" title="9.7 更多字符串的内容"></a>9.7 更多字符串的内容</h1><p>字符串也是对象，同样具有方法，可以完成包括检验一部分字符串和去除空格在内的各种工作<br>在程序中使用的字符串，都是str类的对象，下面例子说明其中一些方法，具体列表参见help(str)</p>
+<h2 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: str_methods.py</span></span><br><span class="line"></span><br><span class="line">name = <span class="string">'Swaroop'</span> <span class="comment"># This is a string object </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> name.startswith(<span class="string">'Swa'</span>):</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Yes, the string starts with "Swa"'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">'a'</span> <span class="keyword">in</span> name:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Yes, it contains the string "a"'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> name.find(<span class="string">'war'</span>) != <span class="number">-1</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Yes, it contains the string "war"'</span></span><br><span class="line"></span><br><span class="line">delimiter = <span class="string">'_*_'</span></span><br><span class="line">mylist = [<span class="string">'Brazil'</span>, <span class="string">'Russia'</span>, <span class="string">'India'</span>, <span class="string">'China'</span>]</span><br><span class="line"><span class="keyword">print</span> delimiter.join(mylist)</span><br></pre></td></tr></table></figure>
+<h2 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ python str_methods.py</span><br><span class="line">Yes, the string starts with <span class="string">"Swa"</span></span><br><span class="line">Yes, it contains the string <span class="string">"a"</span></span><br><span class="line">Yes, it contains the string <span class="string">"war"</span></span><br><span class="line">Brazil_*_Russia_*_India_*_China</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-6"><a href="#如何工作-6" class="headerlink" title="如何工作"></a>如何工作</h2><p>startwith方法测试字符串是否以给定字符串开始<br>in操作符检验一个给定字符串是否为另一个字符串的一部分<br>find方法用来找出给定字符串在另一个字符串中的位置，或返回-1表示找不到子字符串<br>str类的join方法，用一个作为分隔符的字符串连接序列的项目，返回生成的大字符串</p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000100-简明Python教程-8.模块/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000102-简明Python教程-10.解决问题——编写一个Python脚本/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

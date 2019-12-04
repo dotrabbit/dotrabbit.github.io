@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>关于Web Services | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Web,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web-Services简介"><span class="toc-text">Web Services简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web-Services核心概念"><span class="toc-text">Web Services核心概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java实现Web-Services"><span class="toc-text">Java实现Web Services</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、使用JAX-WS"><span class="toc-text">1、使用JAX-WS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、使用AXIS2开发"><span class="toc-text">2、使用AXIS2开发:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Spring整合"><span class="toc-text">3、Spring整合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、开启Session"><span class="toc-text">4、开启Session</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000136-关于Web Services" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">关于Web Services</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.02.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="Web-Services简介"><a href="#Web-Services简介" class="headerlink" title="Web Services简介"></a>Web Services简介</h1><p>Web Services的主要目的是实现跨平台、跨语言、跨系统的功能调用和数据传输<br>Web Services = HTTP + XML，具有平台无关性<br>使不同实现方式的应用间可以进行数据传输，可以用来完成面向服务的架构，实现应用松耦合、高复用、模块化等<br>因为基于HTTP，因此可以绕过防火墙</p>
+<h1 id="Web-Services核心概念"><a href="#Web-Services核心概念" class="headerlink" title="Web Services核心概念"></a>Web Services核心概念</h1><p>1、WSDL：<br>全称Web Services Description Language，ws描述语言<br>基于XML，用于描述ws的地址、服务、调用方式、返回参数等<br>系统之间通过WSDL交流，服务端发布WSDL，客户端根据WSDL调用方法获取数据<br>2、SOAP：<br>全称Simple Object Access Protocol，简单对象访问协议<br>协议定义了通信方式(HTTP，也可以是SMTP、消息队列等)和通信内容(XML)<br>通信方式：HTTP，只使用POST方式<br>通信内容：使用SOAP Envelope命名空间的xml<br>SOAP目前有两个版本，1.1和1.2，区别：<br>a. 对于HTTP header，1.1中Content-Type为text/xml，1.2中为application/soap+xml<br>b. 对于HTTP header，1.1中有SOAPAction行，1.2没有<br>c. xmlns不同(<a href="http://www.cnblogs.com/JeffreySun/archive/2009/12/14/1623766.html" target="_blank" rel="noopener">http://www.cnblogs.com/JeffreySun/archive/2009/12/14/1623766.html</a>)</p>
+<p>以上具体内容可参见：<br><a href="http://www.w3school.com.cn/wsdl/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/wsdl/index.asp</a><br><a href="http://www.w3school.com.cn/soap/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/soap/index.asp</a><br><a href="http://blog.csdn.net/steveguoshao/article/details/8657745" target="_blank" rel="noopener">http://blog.csdn.net/steveguoshao/article/details/8657745</a></p>
+<h1 id="Java实现Web-Services"><a href="#Java实现Web-Services" class="headerlink" title="Java实现Web Services"></a>Java实现Web Services</h1><h2 id="1、使用JAX-WS"><a href="#1、使用JAX-WS" class="headerlink" title="1、使用JAX-WS"></a>1、使用JAX-WS</h2><p><a href="http://www.cnblogs.com/yisheng163/p/4524808.html" target="_blank" rel="noopener">http://www.cnblogs.com/yisheng163/p/4524808.html</a><br><a href="http://docs.oracle.com/cd/E17904_01/web.1111/e13734/" target="_blank" rel="noopener">http://docs.oracle.com/cd/E17904_01/web.1111/e13734/</a></p>
+<h2 id="2、使用AXIS2开发"><a href="#2、使用AXIS2开发" class="headerlink" title="2、使用AXIS2开发:"></a>2、使用AXIS2开发:</h2><p><a href="http://blog.csdn.net/xumengxing/article/details/13093573" target="_blank" rel="noopener">http://blog.csdn.net/xumengxing/article/details/13093573</a><br><a href="http://axis.apache.org/axis2/java/core/docs/quickstartguide.html" target="_blank" rel="noopener">http://axis.apache.org/axis2/java/core/docs/quickstartguide.html</a></p>
+<h2 id="3、Spring整合"><a href="#3、Spring整合" class="headerlink" title="3、Spring整合"></a>3、Spring整合</h2><p><a href="http://axis.apache.org/axis2/java/core/docs/spring.html" target="_blank" rel="noopener">http://axis.apache.org/axis2/java/core/docs/spring.html</a></p>
+<h2 id="4、开启Session"><a href="#4、开启Session" class="headerlink" title="4、开启Session"></a>4、开启Session</h2><p>JAX-WS: <a href="http://docs.oracle.com/cd/E17904_01/web.1111/e13734/stateful.htm#WSADV234" target="_blank" rel="noopener">http://docs.oracle.com/cd/E17904_01/web.1111/e13734/stateful.htm#WSADV234</a><br>AXIS2: <a href="http://axis.apache.org/axis2/java/core/docs/jaxws-guide.html#HTTPSession" target="_blank" rel="noopener">http://axis.apache.org/axis2/java/core/docs/jaxws-guide.html#HTTPSession</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/生活杂记/000136-《黑镜》第三季/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/工具/000137-Git入门/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

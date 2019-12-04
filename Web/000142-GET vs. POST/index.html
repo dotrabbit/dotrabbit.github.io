@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>GET vs. POST | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Web,HTTP,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、HTTP"><span class="toc-text">1、HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、参数"><span class="toc-text">2、参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、记录"><span class="toc-text">3、记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、编码"><span class="toc-text">4、编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、扩展："><span class="toc-text">5、扩展：</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000142-GET vs. POST" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">GET vs. POST</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.07</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="1、HTTP"><a href="#1、HTTP" class="headerlink" title="1、HTTP"></a>1、HTTP</h1><p>从HTTP规范的语义角度讲，GET表示从指定的资源请求数据，POST表示向指定的资源提交要被处理的数据<br>GET与POST请求可分别对应CURD中的查询和更新操作<br>另外，GET应为安全的，即GET请求不应产生副作用，向服务器发起的GET请求不应修改服务器上的资源，POST表示可能发生修改</p>
+<h1 id="2、参数"><a href="#2、参数" class="headerlink" title="2、参数"></a>2、参数</h1><p>GET的查询字符串(名称/值对)使用放在GET请求的URL中发送，POST的查询字符串(名称/值对)是在请求的HTTP消息主体重发送<br>因此，由于浏览器对URL长度的限制，GET请求有长度限制，而POST请求对数据长度没有要求<br>另外，因为GET请求将参数放在URL中，会被写入服务器日志，较为不安全</p>
+<h1 id="3、记录"><a href="#3、记录" class="headerlink" title="3、记录"></a>3、记录</h1><p>GET请求可被缓存、保留在浏览器历史记录中、可被收藏为书签<br>POST请求不会被缓存、不会保留在浏览器历史记录中、不能被收藏为书签<br>因此，POST请求更加安全，GET请求不应再处理敏感数据时使用</p>
+<h1 id="4、编码"><a href="#4、编码" class="headerlink" title="4、编码"></a>4、编码</h1><p>GET请求只允许ASCII字符，POST没有限制，也允许二进制数据，支持整个ISO10646字符集，默认使用ISO-8859-1编码<br>对于特殊字符，如中文，GET请求需要通过url encode后才可以发出，浏览器各自行为不同，一般网站都会在js代码中完成编码，替浏览器做好该步骤，统一编码，Java程序可使用java.net.URLEncoder编码</p>
+<h1 id="5、扩展："><a href="#5、扩展：" class="headerlink" title="5、扩展："></a>5、扩展：</h1><p>HTTP请求方法：<br>方法    描述<br>HEAD    与GET相同，但只返回HTTP报头，不返回文档主体<br>PUT    上传指定的URI表示<br>DELETE    删除指定资源<br>OPTIONS    返回服务器支持的HTTP方法<br>CONNECT    把请求连接转换到透明的TCP/IP通道</p>
+<p>参考：<br><a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/tags/html_ref_httpmethods.asp</a><br><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html</a><br><a href="http://www.jb51.net/web/12714.html" target="_blank" rel="noopener">http://www.jb51.net/web/12714.html</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Web/000141-HTTP代码/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/生活杂记/000143-2017年终总结/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

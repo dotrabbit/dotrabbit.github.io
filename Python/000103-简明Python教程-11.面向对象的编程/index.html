@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-11.面向对象的编程 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#11-1-简介"><span class="toc-text">11.1 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-2-self"><span class="toc-text">11.2 self</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-3-类"><span class="toc-text">11.3 类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个类"><span class="toc-text">创建一个类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-4-对象的方法"><span class="toc-text">11.4 对象的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-1"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-1"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-5-init-方法"><span class="toc-text">11.5 __init__方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-init-方法"><span class="toc-text">使用__init__方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-2"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-2"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-6-类与对象的方法"><span class="toc-text">11.6 类与对象的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用类与对象的变量"><span class="toc-text">使用类与对象的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-3"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-3"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-7-继承"><span class="toc-text">11.7 继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用继承"><span class="toc-text">使用继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-4"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-4"><span class="toc-text">如何工作</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000103-简明Python教程-11.面向对象的编程" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-11.面向对象的编程</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.29</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="11-1-简介"><a href="#11-1-简介" class="headerlink" title="11.1 简介"></a>11.1 简介</h1><p>目前为止的程序都是<em> 面向过程 </em>的。把数据和功能结合起来，用称为对象的东西包裹起来组织程序的方法，称为<em> 面向对象 </em>编程<br>类和对象是面向对象编程的两个主要方面：类创建一个新类型，对象是这个类的实例<br>对象可以使用属于对象的变量，来存储数据，属于一个对象或类的变量称为<strong> 域 </strong><br>对象可以使用属于类的函数，来具有功能，属于一个类的函数称为<strong> 方法 </strong><br>域和方法合称为类的<strong> 属性 </strong><br>域有两种类型，属于每个实例/类的，称为<strong> 实例变量 </strong>，属于类本身的，称为<strong> 类变量 </strong><br>类使用class关键字创建<br>类的域和方法被列在一个缩进块中</p>
+<h1 id="11-2-self"><a href="#11-2-self" class="headerlink" title="11.2 self"></a>11.2 self</h1><p>类的方法与普通函数只有一个特别的区别：<br>类的方法必须有一个额外的第一个参数名称，但在调用时<strong>不</strong>为这个参数赋值，Python会提供这个值<br>这个特别的变量指对象本身，按照惯例它的名称是self，虽然可以指定任何名称，但是强烈建议使用self，使得程序读者和IDE可以迅速识别它<br>例如有一个名为MyClass的类，和该类的一个实例MyObject，当调用MyObject(arg1, arg2)时，Python会自动转为MyClass.method(MyObject, arg1, arg2)<br>如果有一个不需要参数的方法，还是得给这个方法定义一个self参数</p>
+<h1 id="11-3-类"><a href="#11-3-类" class="headerlink" title="11.3 类"></a>11.3 类</h1><h2 id="创建一个类"><a href="#创建一个类" class="headerlink" title="创建一个类"></a>创建一个类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: simplestclass.py</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="keyword">pass</span> <span class="comment"># An empty block</span></span><br><span class="line"></span><br><span class="line">p = Person()</span><br><span class="line"><span class="keyword">print</span> p</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python simplestclass.py</span><br><span class="line">&lt;__main__.Person instance at 0xf6fcb18c&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>使用class语句后跟类名，创建一个新类，后面的缩进的语句块行成类体，例子中使用了空白块，由pass语句表示<br>类名后跟圆括号来创建一个对象/实例<br>为了验证，打印变量的类型，显示__main__模块中有了一个Person类的实例，同时打印了存储对象的计算机内存地址</p>
+<h1 id="11-4-对象的方法"><a href="#11-4-对象的方法" class="headerlink" title="11.4 对象的方法"></a>11.4 对象的方法</h1><p>对象的方法与函数的区别只是一个额外的self变量<br>使用对象的方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: method.py</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHi</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Hello, how are you?'</span></span><br><span class="line"></span><br><span class="line">p = Person()</span><br><span class="line">p.sayHi()</span><br><span class="line"></span><br><span class="line"><span class="comment"># This short example can also be written as Person().sayHi()</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python method.py</span><br><span class="line">Hello, how are you?</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-1"><a href="#如何工作-1" class="headerlink" title="如何工作"></a>如何工作</h2><p>sayHi方法没有任何参数，但仍然在函数定义时有self</p>
+<h1 id="11-5-init-方法"><a href="#11-5-init-方法" class="headerlink" title="11.5 __init__方法"></a>11.5 __init__方法</h1><p>Python的类中，有很多方法的名字有特殊的意义<br>__init__方法在类的一个对象被建立时，马上运行，可以用来做一些对象的<em> 初始化 </em>，类似于Java中的构造方法<br>注意名称的开始和结尾都是双下划线</p>
+<h1 id="使用-init-方法"><a href="#使用-init-方法" class="headerlink" title="使用__init__方法"></a>使用__init__方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: class_init.py</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHi</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Hello, my name is'</span>, self.name</span><br><span class="line"></span><br><span class="line">p = Person(<span class="string">'Swaroop'</span>)</span><br><span class="line">p.sayHi()</span><br><span class="line"></span><br><span class="line"><span class="comment"># This short example can also be written as Person('Swaroop').sayHi()</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python class_init.py</span><br><span class="line">Hello, my name is Swaroop</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-2"><a href="#如何工作-2" class="headerlink" title="如何工作"></a>如何工作</h2><p>把__init__方法定义为取一个参数name(以及普通的参数self)，并创建一个新的域，也称为name，它们是两个不同的变量，通过点号区分<br>程序中并没有调用__init__方法，只在创建类的新实例的时候，把参数包括在圆括号内，跟在类名后面，从而传递给__init__方法<br>接下来就可以在sayHi方法中使用self.name域了</p>
+<h1 id="11-6-类与对象的方法"><a href="#11-6-类与对象的方法" class="headerlink" title="11.6 类与对象的方法"></a>11.6 类与对象的方法</h1><p>已经讨论了类与对象的功能部分，现在来看它的数据部分，它们是与类和对象的命名空间绑定的普通变量，即只在类与对象中有效<br>有两种域——类的变量，和对象的变量，根据类还是对象拥有这个变量区分<br>类的变量，由一个类的所有对象/实例共享使用，只有一个类变量拷贝，所以某个对象对类的变量做了修改，会反映到所有其他实例<br>对象的变量，由类的每个对象/实例拥有，每个对象有自己对这个域的一份拷贝，即它们不是共享的</p>
+<h2 id="使用类与对象的变量"><a href="#使用类与对象的变量" class="headerlink" title="使用类与对象的变量"></a>使用类与对象的变量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: objvar.py</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="string">'''Represents a person.'''</span></span><br><span class="line">    population = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="string">'''Initializes the person's data.'''</span></span><br><span class="line">        self.name = name</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'(Initializing %s)'</span> % self.name</span><br><span class="line"></span><br><span class="line">        <span class="comment"># When this person is created, he/she</span></span><br><span class="line">        <span class="comment"># adds to the population</span></span><br><span class="line">        Person.population += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''I am dying.'''</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'%s says bye.'</span> % self.name</span><br><span class="line"></span><br><span class="line">        Person.population -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> Person.population == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'I am the last one.'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'There are still %d people left.'</span> % Person.population</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHi</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''Greeting by the person.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Really, that's all it does.'''</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Hi, my name is %s.'</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">howMany</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''Prints the current population.'''</span></span><br><span class="line">        <span class="keyword">if</span> Person.population == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'I am the only person here.'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'We have %d persons here.'</span> % Person.population</span><br><span class="line"></span><br><span class="line">swaroop = Person(<span class="string">'Swaroop'</span>)</span><br><span class="line">swaroop.sayHi()</span><br><span class="line">swaroop.howMany()</span><br><span class="line"></span><br><span class="line">kalam = Person(<span class="string">'Abdul Kalam'</span>)</span><br><span class="line">kalam.sayHi()</span><br><span class="line">kalam.howMany()</span><br><span class="line"></span><br><span class="line">swaroop.sayHi()</span><br><span class="line">swaroop.howMany()</span><br></pre></td></tr></table></figure>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ python objvar.py</span><br><span class="line">(Initializing Swaroop)</span><br><span class="line">Hi, my name is Swaroop.</span><br><span class="line">I am the only person here.</span><br><span class="line">(Initializing Abdul Kalam)</span><br><span class="line">Hi, my name is Abdul Kalam.</span><br><span class="line">We have 2 persons here.</span><br><span class="line">Hi, my name is Swaroop.</span><br><span class="line">We have 2 persons here.</span><br><span class="line">Abdul Kalam says <span class="built_in">bye</span>.</span><br><span class="line">There are still 1 people left.</span><br><span class="line">Swaroop says <span class="built_in">bye</span>.</span><br><span class="line">I am the last one.</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-3"><a href="#如何工作-3" class="headerlink" title="如何工作"></a>如何工作</h2><p>population变量属于Person类，是一个类的变量；name变量属于对象(使用self赋值)，是一个类的变量<br>__init__方法用一个名字来初始化Person实例，并在population上加1，因为增加了一个人<br>self.name根据每个对象指定，表明它作为对象的变量的本质。<strong>只</strong>能使用self变量来引用同一个对象的变量和方法，称为<em> 属性引用 </em><br><strong>docstring</strong>对于类和方法同样有用，可以在运行时使用Person.__doc__和Person.sayHi.__doc__，来分别访问类和方法的文档字符串<br>__del__方法在对象消逝(即对象不再使用，其所占用的内存将返回系统)的时候被调用，在该方法里，将Person.population减1<br>然而很难保证__del__方法在什么时候运行，使用del语句可以指明它的运行<br>注释：<br>相对于Java，Python中所有的类成员(包括数据成员)都是<em> 公共的 </em>，所有方法都是<em> 有效的 </em><br>有一个例外，当数据成员名称以<em> 双下划线前缀 </em>(如__privatevar)，则Python会把它作为私有变量<br>有一个惯例，如果某个变量只想在类或对象中使用，则应以<em> 单下划线前缀 </em>，而其他名称都将作为公共的，可以被其他类/对象使用。但这只是一个惯例，并不像双下划线前缀那样，是Python所要求的<br>__del__方法与destructor概念类似</p>
+<h1 id="11-7-继承"><a href="#11-7-继承" class="headerlink" title="11.7 继承"></a>11.7 继承</h1><p>面向对象编程的好处之一是代码<strong>重用</strong>，实现重用的方法之一是通过<em>继承</em>机制，<em>继承</em>可以理解成类之间的<em>类型</em>和<em>子类型</em>关系<br>设想一个学校中的教师和学生类，他们有共同的属性，如姓名、年龄和地址，也有转有属性，如教师的薪水、课程和假期，学生的成绩和学费<br>好的方法是创建一个共同的类SchoolMember，然后让教师和学生类都<em>继承</em>这个共同的类，即它们都是这个类型(类)的子类型，然后再为这些子类型添加转有的属性<br>这种方法有很多优点：<br>1、如果增加/改变了SchoolMember中的任何功能，它会自动地反映到子类型中。<br>例如为教师和学生都添加一个身份证的域，只需要把它加到SchoolMember中。而在一个子类型中做的改动不会影响别的子类型。<br>2、可以把教师和学生对象都作为SchoolMember对象来使用。<br>例如在统计学校成员的人数时非常有用。一个子类型在任何需要父类型的场合可以被替换成父类型，即对象可被视作父类的实例，这被称为<strong>多态现象</strong><br>在<em>重用</em>父类代码时，不必再在每个子类中重复它<br>在上例中，SchoolMember被称为<em>基本类</em>或<em>超类</em>，Teacher和Student类称为<em>导出类</em>或<em>子类</em></p>
+<h2 id="使用继承"><a href="#使用继承" class="headerlink" title="使用继承"></a>使用继承</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: inherit.py</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SchoolMember</span>:</span></span><br><span class="line">    <span class="string">'''Represents any school member.'''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'(Initialized SchoolMember: %s)'</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tell</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''Tell my details.'''</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Name:"%s" Age:"%s"'</span> % (self.name, self.age),</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span><span class="params">(SchoolMember)</span>:</span></span><br><span class="line">    <span class="string">'''Represents a teacher.'''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, salary)</span>:</span></span><br><span class="line">        SchoolMember.__init__(self, name, age)</span><br><span class="line">        self.salary = salary</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'(Initialized Teacher: %s)'</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tell</span><span class="params">(self)</span>:</span></span><br><span class="line">        SchoolMember.tell(self)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Salary: "%d"'</span> % self.salary</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(SchoolMember)</span>:</span></span><br><span class="line">    <span class="string">'''Represents a student.'''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, marks)</span>:</span></span><br><span class="line">        SchoolMember.__init__(self, name, age)</span><br><span class="line">        self.marks = marks</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'(Initialized Student: %s)'</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tell</span><span class="params">(self)</span>:</span></span><br><span class="line">        SchoolMember.tell(self)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Marks: "%d"'</span> % self.marks</span><br><span class="line"></span><br><span class="line">t = Teacher(<span class="string">'Mrs. Shrividya'</span>, <span class="number">40</span>, <span class="number">30000</span>)</span><br><span class="line">s = Student(<span class="string">'Swaroop'</span>, <span class="number">22</span>, <span class="number">75</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="comment"># prints a blank line</span></span><br><span class="line"></span><br><span class="line">members = [t, s]</span><br><span class="line"><span class="keyword">for</span> member <span class="keyword">in</span> members:</span><br><span class="line">    member.tell() <span class="comment"># works for both Teachers and Students</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python inherit.py</span><br><span class="line">(Initialized SchoolMember: Mrs. Shrividya)</span><br><span class="line">(Initialized Teacher: Mrs. Shrividya)</span><br><span class="line">(Initialized SchoolMember: Swaroop)</span><br><span class="line">(Initialized Student: Swaroop)</span><br><span class="line"></span><br><span class="line">Name:<span class="string">"Mrs. Shrividya"</span> Age:<span class="string">"40"</span> Salary: <span class="string">"30000"</span></span><br><span class="line">Name:<span class="string">"Swaroop"</span> Age:<span class="string">"22"</span> Marks: <span class="string">"75"</span></span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-4"><a href="#如何工作-4" class="headerlink" title="如何工作"></a>如何工作</h2><p>定义类时，将父类的名称作为一个元组，跟在类名称之后，来使用继承<br>父类的__init__方法使用self变量调用，这样就可以初始化对象的父类部分。这一点很重要——Python不会自动调用父类的constructor，需要手动专门调用它<br>在方法调用之前加上类名称前缀，然后把self变量及其他参数传递给它<br>在使用SchoolMember类的tell方法时，把Teacher和Student的实例仅作为SchoolMember的实例<br>在调用子类型的tell方法时，Python会首先查找对应类型的方法，如果在子类中找不到对应的方法，才会在父类中逐个查找。父类是在类定义的时候在元组中指明的。<br>如果在继承元组中列了一个以上的类，那么它就被称作<em>多重继承</em></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000102-简明Python教程-10.解决问题——编写一个Python脚本/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000104-简明Python教程-12.输入输出/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

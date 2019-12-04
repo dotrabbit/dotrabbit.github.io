@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-10.解决问题——编写一个Python脚本 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-1-问题"><span class="toc-text">10.1 问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-2-解决方案"><span class="toc-text">10.2 解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本一"><span class="toc-text">版本一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作"><span class="toc-text">如何工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本二"><span class="toc-text">版本二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-1"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-1"><span class="toc-text">如何工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本三"><span class="toc-text">版本三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-2"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何不工作"><span class="toc-text">如何不工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本四"><span class="toc-text">版本四</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-3"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-2"><span class="toc-text">如何工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进一步优化"><span class="toc-text">进一步优化</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000102-简明Python教程-10.解决问题——编写一个Python脚本" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-10.解决问题——编写一个Python脚本</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="10-1-问题"><a href="#10-1-问题" class="headerlink" title="10.1 问题"></a>10.1 问题</h1><p>为所有重要文件备份<br><strong>分析：</strong>如何确定该备份哪些文件？备份保存在哪里？怎么样存储备份？<br><strong>设计：</strong><br>1、需要备份一的文件和目录由一个列表制定<br>2、备份保存在主备份目录中<br>3、备份成一个zip文件<br>4、zip存档的名称是当前的日期和时间<br>5、使用标准的zip命令(Linux/Unix默认，Windows可使用Info-Zip等，只要有命令行界面可以在脚本中给它传递参数即可)</p>
+<h1 id="10-2-解决方案"><a href="#10-2-解决方案" class="headerlink" title="10.2 解决方案"></a>10.2 解决方案</h1><p><strong>实施：</strong></p>
+<h2 id="版本一"><a href="#版本一" class="headerlink" title="版本一"></a>版本一</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver1.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">'/home/swaroop/byte'</span>, <span class="string">'/home/swaroop/bin'</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r'C:\Documents', r'D:\Work'] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">'/mnt/e/backup/'</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The name of the zip archive is the current date and time</span></span><br><span class="line">target = target_dir + time.strftime(<span class="string">'%Y%m%d%H%M%S'</span>) + <span class="string">'.zip'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">"zip -qr '%s' %s"</span> % (target, <span class="string">' '</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Successful backup to'</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Backup FAILED'</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python backup_ver1.py</span><br><span class="line">Successful backup to /mnt/e/backup/20041208073244.zip</span><br></pre></td></tr></table></figure>
+<p>现在已经处于测试环节了，测试程序是否正确工作<br>如果结果与期望不一样，就得调试程序，即消除程序中的错误</p>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>将<em> 设计 </em>一步一步地转换为<em> 代码 </em><br>1、要使用了os和time模块，现在程序中引入它们<br>2、source列表指定需要备份的文件和目录；target_dir变量制定存储备份文件的目标目录；zip归档的名称是目前的日期和时间，由time.strftime()函数获得，并加上.zip扩展名<br>2.a time.strftime()函数需要使用定制，%Y会被无世纪的年份替代，%m会被01到12之间的月份替代，以此类推。这些定制的详细情况可以在Python的发行版中的《Python参考手册》中获得，与print语句的定制(%后跟一个元组)类似，但不完全相同<br>2.b 使用加法操作符来<em> 级连 </em>字符串，即把两个字符串连接在一起，返回一个新的字符串<br>3、创建zip_command字符串，包含将要执行的命令<br>3.a 可以在shell(Linux终端或DOS提示符)中运行它，检验它是否工作<br>3.b zip命令有一些选项和参数，-q选项表示zip命令安静地工作，-r选项表示对目录递归地工作，即包括子目录及子目录中的文件，两个选项可以组合写成-qr，选项后是待创建的zip归档的名称<br>3.c 使用字符串的join方法，把source列表转换为字符串<br>4、使用os.system函数运行命令，利用这个函数就好像在<em> 系统 </em>中运行命令一样，成功返回0，否则返回错误号<br>5、根据打印的消息，显示备份是否创建成功<br>(注意，Windows把反斜杠()作为目录分隔符，而Python用反斜杠表示转义符，因此在source和target目录中，需要转义’C:\Documents’或者使用自然字符串r’C:\Documents’)<br>这被称为软件的<strong> 开发 </strong>环节。上述程序可以正确工作，但如果在使用中发生问题，则应回到设计环节或者调试程序</p>
+<h2 id="版本二"><a href="#版本二" class="headerlink" title="版本二"></a>版本二</h2><p>版本一可以工作，但我们可以对它进行优化让它在日常工作中变得更好，这称为软件的维护环节<br>例如文件名机制，可以使用当前日期作为目录名，当前时间作为文件名，存放在主备份目录中。优势是便于管理且文件名更短<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver2.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">'/home/swaroop/byte'</span>, <span class="string">'/home/swaroop/bin'</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r'C:\Documents', r'D:\Work'] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">'/mnt/e/backup/'</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The current day is the name of the subdirectory in the main directory</span></span><br><span class="line">today = target_dir + time.strftime(<span class="string">'%Y%m%d'</span>)</span><br><span class="line"><span class="comment"># The current time is the name of the zip archive</span></span><br><span class="line">now = time.strftime(<span class="string">'%H%M%S'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the subdirectory if it isn't already there</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(today):</span><br><span class="line">    os.mkdir(today) <span class="comment"># make directory</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Successfully created directory'</span>, today</span><br><span class="line"></span><br><span class="line"><span class="comment"># The name of the zip file</span></span><br><span class="line">target = today + os.sep + now + <span class="string">'.zip'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">"zip -qr '%s' %s"</span> % (target, <span class="string">' '</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Successful backup to'</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Backup FAILED'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python backup_ver2.py</span><br><span class="line">Successfully created directory /mnt/e/backup/20041208</span><br><span class="line">Successful backup to /mnt/e/backup/20041208/080020.zip</span><br><span class="line"></span><br><span class="line">$ python backup_ver2.py</span><br><span class="line">Successful backup to /mnt/e/backup/20041208/080428.zip</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-1"><a href="#如何工作-1" class="headerlink" title="如何工作"></a>如何工作</h2><p>与版本一大部分相同，但使用os.exists函数，检验在主备份目录中是否有以当前日期明明的目录，如果没有，使用os.mkdir函数创建<br>os.sep变量根据操作系统给出目录分隔符(Linux/Unix下是’/‘，Windows下是’\’，Mac OS下是’:’)，使用os.sep比直接使用字符更具有移植性</p>
+<h2 id="版本三"><a href="#版本三" class="headerlink" title="版本三"></a>版本三</h2><p>当备份多的时候无法区分备份内容，可以让用户对备份输入注释，添加到zip归档的文件名上<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver3.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">'/home/swaroop/byte'</span>, <span class="string">'/home/swaroop/bin'</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r'C:\Documents', r'D:\Work'] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">'/mnt/e/backup/'</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The current day is the name of the subdirectory in the main directory</span></span><br><span class="line">today = target_dir + time.strftime(<span class="string">'%Y%m%d'</span>)</span><br><span class="line"><span class="comment"># The current time is the name of the zip archive</span></span><br><span class="line">now = time.strftime(<span class="string">'%H%M%S'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Take a comment from the user to create the name of the zip file</span></span><br><span class="line">comment = raw_input(<span class="string">'Enter a comment --&gt; '</span>)</span><br><span class="line"><span class="keyword">if</span> len(comment) == <span class="number">0</span>: <span class="comment"># check if a comment was entered</span></span><br><span class="line">    target = today + os.sep + now + <span class="string">'.zip'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    target = today + os.sep + now + <span class="string">'_'</span> +</span><br><span class="line">        comment.replace(<span class="string">' '</span>, <span class="string">'_'</span>) + <span class="string">'.zip'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the subdirectory if it isn't already there</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(today):</span><br><span class="line">    os.mkdir(today) <span class="comment"># make directory</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Successfully created directory'</span>, today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">"zip -qr '%s' %s"</span> % (target, <span class="string">' '</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Successful backup to'</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Backup FAILED'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ python backup_ver3.py</span><br><span class="line">File <span class="string">"backup_ver3.py"</span>, line 25</span><br><span class="line">target = today + os.sep + now + <span class="string">'_'</span> +</span><br><span class="line">                                ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+<h2 id="如何不工作"><a href="#如何不工作" class="headerlink" title="如何不工作"></a>如何不工作</h2><p>这个程序不工作，Python提示有一个语法错误，根据给出的错误的位置，从那行开始<em> 调试 </em>程序<br>观察发现，有一个逻辑行，被分成了两个物理行，但没有指明这两个物理行属于同一逻辑航，需要使用反斜杠来表示逻辑航在下一物理行继续</p>
+<h2 id="版本四"><a href="#版本四" class="headerlink" title="版本四"></a>版本四</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver4.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">'/home/swaroop/byte'</span>, <span class="string">'/home/swaroop/bin'</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r'C:\Documents', r'D:\Work'] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">'/mnt/e/backup/'</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The current day is the name of the subdirectory in the main directory</span></span><br><span class="line">today = target_dir + time.strftime(<span class="string">'%Y%m%d'</span>)</span><br><span class="line"><span class="comment"># The current time is the name of the zip archive</span></span><br><span class="line">now = time.strftime(<span class="string">'%H%M%S'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Take a comment from the user to create the name of the zip file</span></span><br><span class="line">comment = raw_input(<span class="string">'Enter a comment --&gt; '</span>)</span><br><span class="line"><span class="keyword">if</span> len(comment) == <span class="number">0</span>: <span class="comment"># check if a comment was entered</span></span><br><span class="line">    target = today + os.sep + now + <span class="string">'.zip'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    target = today + os.sep + now + <span class="string">'_'</span> + \</span><br><span class="line">        comment.replace(<span class="string">' '</span>, <span class="string">'_'</span>) + <span class="string">'.zip'</span></span><br><span class="line">    <span class="comment"># Notice the backslash!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the subdirectory if it isn't already there</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(today):</span><br><span class="line">    os.mkdir(today) <span class="comment"># make directory</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Successfully created directory'</span>, today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">"zip -qr '%s' %s"</span> % (target, <span class="string">' '</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Successful backup to'</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Backup FAILED'</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ python backup_ver4.py</span><br><span class="line">Enter a comment --&gt; added new examples</span><br><span class="line">Successful backup to /mnt/e/backup/20041208/082156_added_new_examples.zip</span><br><span class="line"></span><br><span class="line">$ python backup_ver4.py</span><br><span class="line">Enter a comment --&gt;</span><br><span class="line">Successful backup to /mnt/e/backup/20041208/082316.zip</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-2"><a href="#如何工作-2" class="headerlink" title="如何工作"></a>如何工作</h2><p>经过修改，程序现在工作了，相比版本二的改进：<br>使用raw_input函数得到用户的输入，通过len函数取得输入长度，判断是否有注释</p>
+<h2 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a>进一步优化</h2><p>交互性：使用-v选项来使程序更具交互性<br>参数传递：通过sys.argv列表获取文件和目录，使用list类提供的extend方法加入到source列表中<br>压缩命令：使用tar替代gzip命令，备份会更快更小(Linux/Unix一般默认可用，Windows可下载安装)。另外，使用Python标准库中的zipfile和tarfile更加理想，避免使用可能引发错误的os.system</p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000101-简明Python教程-9.数据结构/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000103-简明Python教程-11.面向对象的编程/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

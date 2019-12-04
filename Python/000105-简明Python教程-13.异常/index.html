@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>简明Python教程-13.异常 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Python,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#13-1-错误"><span class="toc-text">13.1 错误</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-2-try-except"><span class="toc-text">13.2 try..except</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#处理异常"><span class="toc-text">处理异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-3-引发异常"><span class="toc-text">13.3 引发异常</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何引发异常"><span class="toc-text">如何引发异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-1"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-1"><span class="toc-text">如何工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-4-try-finally"><span class="toc-text">13.4 try..finally</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用finally"><span class="toc-text">使用finally</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输出-2"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何工作-2"><span class="toc-text">如何工作</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000105-简明Python教程-13.异常" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">简明Python教程-13.异常</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.06.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>当读某个文件而文件不存在，或者程序运行的时候不小心删除了，等<em>异常</em>的状况发生时，可以使用<strong>异常</strong>来处理<br>例如程序中有无效的语句，Python会<strong>引发</strong>并告诉你那里有一个<strong>错误</strong>，从而处理这种情况</p>
+<h1 id="13-1-错误"><a href="#13-1-错误" class="headerlink" title="13.1 错误"></a>13.1 错误</h1><p>假如把print误拼为Print，则Python会<em>引发</em>一个语法错误：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Print <span class="string">'Hello World'</span></span><br><span class="line">    File <span class="string">"&lt;stdin&gt;"</span>, line 1</span><br><span class="line">      Print <span class="string">'Hello World'</span></span><br><span class="line">                        ^</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; <span class="built_in">print</span> <span class="string">'Hello World'</span></span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure></p>
+<p>有一个SyntaxError被引发，并且检测到的错误位置也打印了出来，这是<em>错误处理器</em>所做的工作</p>
+<h1 id="13-2-try-except"><a href="#13-2-try-except" class="headerlink" title="13.2 try..except"></a>13.2 try..except</h1><p>在读取用户输入时，按Ctrl-d：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = raw_input(<span class="string">'Enter something --&gt; '</span>)</span><br><span class="line">Enter something --&gt; Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line 1, <span class="keyword">in</span> ?</span><br><span class="line">EOFError</span><br></pre></td></tr></table></figure></p>
+<p>Python引发了一个称谓EOFError的错误，意味着程序发现一个不期望的<em>文件尾</em>(由Ctrl-d表示)</p>
+<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><p>使用try..except语句来处理异常<br>把通常的语句放在try块中，把错误处理语句放在except块中<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: try_except.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    s = raw_input(<span class="string">'Enter something --&gt; '</span>)</span><br><span class="line"><span class="keyword">except</span> EOFError:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'\nWhy did you do an EOF on me?'</span></span><br><span class="line">    sys.exit() <span class="comment"># exit the program</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'\nSome error/exception occurred.'</span></span><br><span class="line">    <span class="comment"># here, we are not exiting the program</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Done'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ python try_except.py</span><br><span class="line">Enter something --&gt;</span><br><span class="line">Why did you <span class="keyword">do</span> an EOF on me?</span><br><span class="line"></span><br><span class="line">$ python try_except.py</span><br><span class="line">Enter something --&gt; Python is exceptional!</span><br><span class="line">Done</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>把所有可能引发错误的语句放在try块中，然后在except从句块中处理所有的错误和异常<br>except从句可以处理单一的错误或异常，或者一组包括在圆括号内的错误或异常<br>如果没有给出错误或异常名称，则处理<em>所有的</em>错误和异常<br>对于每个try从句，至少都有一个相关联的except语句<br>如果某个错误或异常没有被处理，则默认地Python处理器就会被调用，它会终止程序的运行，并打印一个消息<br>可以让try..except块关联上一个else从句，当没有异常发生时，else从句将被执行</p>
+<h1 id="13-3-引发异常"><a href="#13-3-引发异常" class="headerlink" title="13.3 引发异常"></a>13.3 引发异常</h1><p>使用raise语句<em>引发</em>异常<br>指明错误/异常的名称，和伴随异常<em>触发的</em>异常对象<br>可以引发的错误或异常应分别是Error或Exception类的子类</p>
+<h2 id="如何引发异常"><a href="#如何引发异常" class="headerlink" title="如何引发异常"></a>如何引发异常</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: raising.py</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShortInputException</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="string">'''A user-defined exception class.'''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, length, atleast)</span>:</span></span><br><span class="line">        Exception.__init__(self)</span><br><span class="line">        self.length = length</span><br><span class="line">        self.atleast = atleast</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    s = raw_input(<span class="string">'Enter something --&gt; '</span>)</span><br><span class="line">    <span class="keyword">if</span> len(s) &lt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">raise</span> ShortInputException(len(s), <span class="number">3</span>)</span><br><span class="line">    <span class="comment"># Other work can continue as usual here</span></span><br><span class="line"><span class="keyword">except</span> EOFError:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'\nWhy did you do an EOF on me?'</span></span><br><span class="line"><span class="keyword">except</span> ShortInputException, x:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'ShortInputException: The input was of length %d, \</span></span><br><span class="line"><span class="string">          was expecting at least %d'</span> % (x.length, x.atleast)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'No exception was raised.'</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ python raising.py</span><br><span class="line">Enter something --&gt;</span><br><span class="line">Why did you <span class="keyword">do</span> an EOF on me?</span><br><span class="line"></span><br><span class="line">$ python raising.py</span><br><span class="line">Enter something --&gt; ab</span><br><span class="line">ShortInputException: The input was of length 2, was expecting at least 3</span><br><span class="line"></span><br><span class="line">$ python raising.py</span><br><span class="line">Enter something --&gt; abc</span><br><span class="line">No exception was raised.</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-1"><a href="#如何工作-1" class="headerlink" title="如何工作"></a>如何工作</h2><p>例中创建一个自己的异常类型，ShortInputException类(可以使用任何预定义的异常/错误)<br>它有两个域——length是给定输入的长度，atleast是程序预期的最小长度<br>在except从句中，提供了错误类，和用来表示错误/异常对象的变量，(与函数调中的形参和实参概念类似)，使用异常对象的域来为用户打印消息</p>
+<h1 id="13-4-try-finally"><a href="#13-4-try-finally" class="headerlink" title="13.4 try..finally"></a>13.4 try..finally</h1><p>使用finally块，来完成无论异常发生与否都做的操作，如读文件时关闭文件<br>在一个try块下，可以同时使用except从句和finally块</p>
+<h1 id="使用finally"><a href="#使用finally" class="headerlink" title="使用finally"></a>使用finally</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: finally.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = file(<span class="string">'poem.txt'</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>: <span class="comment"># our usual file-reading idiom</span></span><br><span class="line">        line = f.readline()</span><br><span class="line">        <span class="keyword">if</span> len(line) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">print</span> line,</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Cleaning up...closed the file'</span></span><br></pre></td></tr></table></figure>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python finally.py</span><br><span class="line">Programming is fun</span><br><span class="line">When the work is <span class="keyword">done</span></span><br><span class="line">Cleaning up...closed the file</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"finally.py"</span>, line 12, <span class="keyword">in</span> ?</span><br><span class="line">    time.sleep(2)</span><br><span class="line">KeyboardInterrupt</span><br></pre></td></tr></table></figure>
+<h2 id="如何工作-2"><a href="#如何工作-2" class="headerlink" title="如何工作"></a>如何工作</h2><p>在读文件时，打印每一行之前用time.sleep方法暂停2秒，按<strong>Ctrl-c</strong>中断/取消程序<br>KeyboardInterrupt异常被触发，程序退出，但在程序退出之前，finally从句仍然被执行，把文件关闭</p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Python/000104-简明Python教程-12.输入输出/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/Python/000106-简明Python教程-14.Python标准库/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

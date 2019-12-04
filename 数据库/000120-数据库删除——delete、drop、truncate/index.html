@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>数据库删除——delete、drop、truncate | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="数据库,Oracle,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、语言"><span class="toc-text">1、语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、功能"><span class="toc-text">2、功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、提交、回滚"><span class="toc-text">3、提交、回滚</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、trigger"><span class="toc-text">4、trigger</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、高水位线-high-water-mark"><span class="toc-text">5、高水位线(high-water-mark)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6、索引"><span class="toc-text">6、索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7、extent"><span class="toc-text">7、extent</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8、速度"><span class="toc-text">8、速度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9、资源"><span class="toc-text">9、资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10、应用"><span class="toc-text">10、应用</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000120-数据库删除——delete、drop、truncate" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">数据库删除——delete、drop、truncate</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="1、语言"><a href="#1、语言" class="headerlink" title="1、语言"></a>1、语言</h1><p>drop和truncate属于DDL(data definition languate)<br>delete是DML(data manilupation language)</p>
+<h1 id="2、功能"><a href="#2、功能" class="headerlink" title="2、功能"></a>2、功能</h1><p>truncate和delete只删除数据，不删除表结构(定义)<br>drop语句将删除表的结构，以及约束(constrain)、触发器(trigger)、索引(index)，依赖于表的存储过程/函数将保留，但是变为invalid状态</p>
+<h1 id="3、提交、回滚"><a href="#3、提交、回滚" class="headerlink" title="3、提交、回滚"></a>3、提交、回滚</h1><p>delete是DML，所以操作会放到回滚段中，事务提交才生效，可回滚<br>drop和truncate是DDL，所以执行后会自动提交立即生效，原数据不会放到rollback segment中，不能回滚</p>
+<h1 id="4、trigger"><a href="#4、trigger" class="headerlink" title="4、trigger"></a>4、trigger</h1><p>delete可触发trigger，drop和truncate不能触发trigger</p>
+<h1 id="5、高水位线-high-water-mark"><a href="#5、高水位线-high-water-mark" class="headerlink" title="5、高水位线(high-water-mark)"></a>5、高水位线(high-water-mark)</h1><p>delete高水位线保持原位置不动<br>truncate语句会将高水位线复位(回到最开始)<br>drop语句将表所占用的空间全部释放<br>关于高水位线，可参考： <a href="http://www.blogjava.net/decode360/archive/2009/07/14/287767.html" target="_blank" rel="noopener">http://www.blogjava.net/decode360/archive/2009/07/14/287767.html</a></p>
+<h1 id="6、索引"><a href="#6、索引" class="headerlink" title="6、索引"></a>6、索引</h1><p>truncate语句会重置所有索引，delete不会</p>
+<h1 id="7、extent"><a href="#7、extent" class="headerlink" title="7、extent"></a>7、extent</h1><p>delete语句不影响表所占用的extend<br>truncate语句缺省情况下见空间释放到minextents个extent，除非使用reuse storage<br>drop语句将表所占用的空间全部释放</p>
+<h1 id="8、速度"><a href="#8、速度" class="headerlink" title="8、速度"></a>8、速度</h1><p>一般来说，drop &gt; truncate &gt; delete</p>
+<h1 id="9、资源"><a href="#9、资源" class="headerlink" title="9、资源"></a>9、资源</h1><p>truncate使用的系统事务日志资源较少<br>delete语句每删除一条数据，会在事务日志中为所删除的每一行记录一项，<br>truncate table 通过释放存储表数据所用的数据页来删除数据，并只在事务日志中记录页的释放</p>
+<h1 id="10、应用"><a href="#10、应用" class="headerlink" title="10、应用"></a>10、应用</h1><p>删除表使用drop<br>保留表但删除数据，可使用truncate，<br>但需要注意，truncate不能使用在有foreign key约束的表，不能用于参与了索引视图的表，因为不记录在日志中所以不能激活trigger，应使用不带where字句的delete语句<br>如果是整理表内部的碎片，可以用truncate跟上reuse stroage，再重新导入/插入数据。</p>
+<p>参考：<br><a href="http://www.cnblogs.com/8765h/archive/2011/11/25/2374167.html" target="_blank" rel="noopener">http://www.cnblogs.com/8765h/archive/2011/11/25/2374167.html</a><br><a href="http://blog.csdn.net/gumengkai/article/details/51079270" target="_blank" rel="noopener">http://blog.csdn.net/gumengkai/article/details/51079270</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/数据库/000119-数据库事务隔离级别/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/数据库/000121-Oracle问题排查/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

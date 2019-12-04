@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Git入门 | dotrabbit&#39;s lair</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="工具,Git,">
+  
+
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git简介"><span class="toc-text">Git简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git的诞生"><span class="toc-text">Git的诞生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集中式vs分布式"><span class="toc-text">集中式vs分布式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Git"><span class="toc-text">安装Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在Linux上安装Git"><span class="toc-text">在Linux上安装Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Mac-OS-X上安装Git"><span class="toc-text">在Mac OS X上安装Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Windows上安装Git"><span class="toc-text">在Windows上安装Git</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建版本库"><span class="toc-text">创建版本库</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-000137-Git入门" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Git入门</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.02.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>dotrabbit</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </span>
+
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>源地址：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git简介 - 廖雪峰的官方网站</a></p>
+<h1 id="Git简介"><a href="#Git简介" class="headerlink" title="Git简介"></a>Git简介</h1><p>git是目前世界上最先进的分布式版本控制系统<br>版本控制帮助我们管理文件改动，和协作编辑</p>
+<h2 id="Git的诞生"><a href="#Git的诞生" class="headerlink" title="Git的诞生"></a>Git的诞生</h2><p>Git是由Linux的创始人Linus花两周时间为Linux用C编写的分布式版本控制系统</p>
+<h2 id="集中式vs分布式"><a href="#集中式vs分布式" class="headerlink" title="集中式vs分布式"></a>集中式vs分布式</h2><p>CVS和SVN是集中式的：<br>1、版本库集中存放在中央服务器<br>2、必须联网才能工作<br>Git是分布式版本控制系统：<br>1、没有“中央服务器”的概念<br>2、每个电脑上都是一个完整的版本库<br>3、通过推送修改来完成协作<br>4、通常会设置一台充当“中央服务器”的电脑，但仅仅是为了更方便“交换”所有人的修改，没有也可以工作</p>
+<h1 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h1><h2 id="在Linux上安装Git"><a href="#在Linux上安装Git" class="headerlink" title="在Linux上安装Git"></a>在Linux上安装Git</h2><p>1、输入git命令，可能系统已经安装<br>2、如果没有，可以通过apt-get等命令进行安装(参考<a href="https://git-scm.com/download/linux" target="_blank" rel="noopener">https://git-scm.com/download/linux</a>)<br>3、或者下载源码make install安装</p>
+<h2 id="在Mac-OS-X上安装Git"><a href="#在Mac-OS-X上安装Git" class="headerlink" title="在Mac OS X上安装Git"></a>在Mac OS X上安装Git</h2><p>1、输入git命令，查看是否已经安装<br>2、通过Xcode，安装Command Line Tools、<br>3、通过homebrew安装(homebrew参考其官方网站)<br>3、下载：<a href="https://git-scm.com/download/mac" target="_blank" rel="noopener">https://git-scm.com/download/mac</a></p>
+<h2 id="在Windows上安装Git"><a href="#在Windows上安装Git" class="headerlink" title="在Windows上安装Git"></a>在Windows上安装Git</h2><p>下载：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
+<p>安装完成后可通过以下命令，设置Git的全局用户名和邮箱：<br><strong> <em> git config –global user.name “Your Name” </em> </strong><br><strong> <em> git config –global user.email “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“ </em> </strong><br>所有仓库都将使用该配置，也可以对某个仓库指定不同的</p>
+<h1 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h1><p>版本库，又叫仓库，英文为repository<br>可以理解成一个目录，目录下所有文件都被Git管理，追踪文件的修改删除等操作，可以查询历史，或还原<br>1、初始化Git仓库<br>在任何目录下，使用命令：<br><strong> <em> git init </em> </strong><br>即可将目录变成Git管理的仓库，目录下出现.git隐藏文件夹(一般不要手动更改其中内容)<br>2、添加文件到Git仓库<br>在Git仓库下，新建文件，如readme.txt，内容为：<br>Git is a version control system.<br>Git is free software.<br>使用以下命令，将文件添加到仓库：<br><strong> <em> git add readme.txt </em> </strong><br>可以添加多个文件<br>使用以下命令，将文件提交到仓库：<br><strong> <em> git commit -m “wrote a readme file” </em> </strong><br>-m指定提交说明</p>
+<p>注：<br>Git像其他所有版本控制系统一样，只跟踪文本文件的改动，如txt、网页、源代码等，可以记录每次改动的位置和内容<br>像图片、视频、office文件等二进制格式的文件，只能记录文件有所改动，而不能记录改动内容<br>文本编码强烈建议使用UTF-8</p>
+<p>参考：<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
+
+    
+  </div>
+
+</article>
+
+   <br>
+   <br>
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/Web/000136-关于Web Services/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/工具/000138-Git核心概念/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
